@@ -46,6 +46,8 @@ input {
     -moz-appearance: none;
 }
 .inputText {
+    -webkit-appearance: none;
+    -moz-appearance: none;
     border: 1px solid #efefef;
     width: 85%;
     padding: 8px;
@@ -65,6 +67,8 @@ form {
 }
 
 .btn {
+    -webkit-appearance: none;
+    -moz-appearance: none;
     background: #3897f0;
     border-color: #3897f0;
     color: #fff;
@@ -93,6 +97,8 @@ form {
 }
 
 .btnDull {
+    -webkit-appearance: none;
+    -moz-appearance: none;
     background: #989898;
     border-color: #989898;
     color: #fff;
