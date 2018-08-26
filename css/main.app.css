@@ -41,7 +41,10 @@ body {
     margin-top: 30px;
     margin-bottom: 30px;
 }
-
+input {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+}
 .inputText {
     border: 1px solid #efefef;
     width: 85%;
