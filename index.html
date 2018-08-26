@@ -1,0 +1,55 @@
+<!doctype html>
+<html>
+    <head>
+        <title>Dunnit</title>
+        <meta name="viewport" content="width=device-width,user-scalable=no">
+        <script src="js/bundle/firebase.js"></script>
+        <link rel="stylesheet" href="css/main.app.css">
+    </head>
+    <body onload="init()">
+        <div id="splashPort">
+            <div class="halfPush"></div>
+            <div class="centerAligned">
+                <span style="opacity: 0;" id="logoLarge" class="logo">Dunnit</span>
+            </div>
+        </div>
+        <div id="accountPort">
+            <div class="centerAligned smallTopMarge">
+                <span class="logo">Dunnit</span>
+            </div>
+            <div id="createAccountPort">
+                <form action="javascript:registAcc()">
+                    <input onkeyup="checkFormContentRegist()" class="inputText" id="attMail" type="url" placeholder="メールアドレス"><br>
+                    <div class="alertTextBanner" id="mailUseOrNot">このメールはすでに使用されています</div>
+                    <input onkeyup="checkFormContentRegist()" class="inputText" id="attName" type="text" placeholder="フルネーム"><br>
+                    <input onkeyup="checkFormContentRegist()" class="inputText" id="attPass" type="password" placeholder="パスワード"><br>
+                    <input onkeyup="checkFormContentRegist()" class="inputText" id="attPassCheck" type="password" placeholder="パスワードを再入力"><br>
+                    <input type="submit" id="registSubmitBtn" class="btn" value="登録する" disabled>
+                    <div class="touPort">
+                        <span>登録することで、Dunnitの<a class="aLink">利用規約</a>に同意するものとします。</span>
+                    </div>
+                </form>
+                <div class="haveAnAccount">
+                    <span>アカウントをお持ちですか？</span><br>
+                    <button onclick="shouLoginPort()" class="btnDull">ログインする</button>
+                </div>
+            </div>
+            <div id="loginPort" style="display: none; opacity: 0;">
+                <form action="javascript:loginUsr()">
+                    <input onkeyup="checkFormContentLogin()" class="inputText" type="url" id="lgAttEm" placeholder="メールアドレス"><br>
+                    <input onkeyup="checkFormContentLogin()" class="inputText" type="password" id="lgAttPsw" placeholder="パスワード"><br>
+                    <input onkeyup="checkFormContentLogin()" type="submit" class="btn" id="loginSubmitBtn" value="ログイン" disabled>
+                </form>
+                <div class="haveAnAccount">
+                    <span>アカウントをお持ちでないですか？</span><br>
+                    <button onclick="shouCrtPort()" class="btnDull">登録する</button>
+                </div>
+            </div>
+        </div>
+        <div id="todoListport"></div>
+        <div id="friendsPort"></div>
+        <div id="settingsPort"></div>
+        <script src="js/main.ui.js"></script>
+        <script src="js/main.server.js"></script>
+    </body>
+</html>
