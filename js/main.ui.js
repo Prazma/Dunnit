@@ -2,6 +2,10 @@ var splashPort = document.getElementById("splashPort");
 var accountPort = document.getElementById("accountPort");
 var todoListport = document.getElementById("todoListport");
 
+var friendSearchAndAddModal = document.getElementById("friendSearchAndAddModal");
+
+var newListTypeSelect = document.getElementById("newListTypeSelect");
+
 var createAccountPort = document.getElementById("createAccountPort");
 var loginPort = document.getElementById("loginPort");
 
@@ -100,6 +104,7 @@ var modal = document.getElementById('newListTypeSelect');
 // Get the <span> element that closes the modal
 var span = document.getElementsByClassName("close")[0];
 var spanTwo = document.getElementsByClassName("close")[1];
+var spanThree = document.getElementsByClassName("close")[2];
 
 // When the user clicks the button, open the modal
 function newList() {
@@ -174,4 +179,22 @@ window.onclick = function(event) {
 
 spanTwo.onclick = function () {
     addFriendsSmallModal.style.display = "none";
+}
+
+function cancelToDoListCreation() {
+    todoListCreatePort.style.display = "none";
+}
+
+function shouFSAAM() {
+    friendSearchAndAddModal.style.display = "block";
+}
+
+spanThree.onclick = function () {
+    friendSearchAndAddModal.style.display = "none";
+}
+
+window.onclick = function(event) {
+    if (event.target == friendSearchAndAddModal) {
+        friendSearchAndAddModal.style.display = "none";
+    }
 }

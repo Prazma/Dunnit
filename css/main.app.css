@@ -130,6 +130,9 @@ form {
 input:disabled {
     opacity: 0.7;
 }
+button:disabled {
+    opacity: 0.7;
+}
 #accountPort {
     transition: 0.5s;
     -webkit-transition: 0.5s;
@@ -225,9 +228,9 @@ input:disabled {
     height: 50px;
     text-align: center;
     border-radius: 50%;
-    background: #0073ff;
-    border: 1px solid #0073ff;
-    box-shadow: 0px 0px 10px #0073ff;
+    background: #5ba5fe;
+    border: 1px solid #5ba5fe;
+    box-shadow: 0px 0px 10px #5ba5fe;
     bottom: 200px;
     right: 35px;
     outline: none;
@@ -380,4 +383,22 @@ input:disabled {
     left: 5%;
     height: 70vh;
     border-radius: 6px;
+}
+.friendSearchAndAddModal {
+    width: 90%;
+    left: 5%;
+    border-radius: 6px;
+    top: 10vh;
+    height: 225px;
+    text-align: center;
+    margin-top: 20px;
+}
+.friendSearchAndAddModalChild {
+    width: 90%;
+    margin-right: auto;
+    margin-left: auto;
+    margin-top: 10px;
+}
+.xWrapperwBorder {
+    text-align: right;width: 90%;margin-right: auto;margin-left: auto;margin-top: 10px;margin-bottom: 10px;padding: 0px 0px 8px 0px;border-bottom: 1px solid #dde3ea;
 }

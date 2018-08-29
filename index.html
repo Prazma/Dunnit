@@ -20,12 +20,12 @@
             </div>
             <div id="createAccountPort">
                 <form action="javascript:registAcc()">
-                    <input onkeyup="checkFormContentRegist()" class="inputText" id="attMail" type="email" placeholder="メールアドレス"><br>
+                    <input  spellcheck="false" onkeyup="checkFormContentRegist()" class="inputText" id="attMail" type="email" placeholder="メールアドレス"><br>
                     <div class="alertTextBanner" id="mailUseOrNot">このメールはすでに使用されています</div>
-                    <input onkeyup="checkFormContentRegist()" class="inputText" id="attName" type="text" placeholder="フルネーム"><br>
-                    <input onkeyup="checkFormContentRegist()" class="inputText" id="attPass" type="password" placeholder="パスワード"><br>
-                    <input onkeyup="checkFormContentRegist()" class="inputText" id="attPassCheck" type="password" placeholder="パスワードを再入力"><br>
-                    <input type="submit" id="registSubmitBtn" class="btn" value="登録する" disabled>
+                    <input  spellcheck="false" onkeyup="checkFormContentRegist()" class="inputText" id="attName" type="text" placeholder="フルネーム"><br>
+                    <input  spellcheck="false" onkeyup="checkFormContentRegist()" class="inputText" id="attPass" type="password" placeholder="パスワード"><br>
+                    <input  spellcheck="false" onkeyup="checkFormContentRegist()" class="inputText" id="attPassCheck" type="password" placeholder="パスワードを再入力"><br>
+                    <input  spellcheck="false" type="submit" id="registSubmitBtn" class="btn" value="登録する" disabled>
                     <div class="touPort">
                         <span>登録することで、Dunnitの<a class="aLink">利用規約</a>に同意するものとします。</span>
                     </div>
@@ -78,8 +78,8 @@
                                     <span class="close">&times;</span>
                                 </div>
                                 <div class="dullBtnList">
-                                    <button class="btnDull" onclick="createToDoList()">ToDoリスト</button>
-                                    <button class="btnDull">日課</button>
+                                    <button class="btn" onclick="createToDoList()">ToDoリスト</button>
+                                    <button class="btn">日課</button>
                                 </div>
                             </div>
                         </div>
@@ -89,7 +89,7 @@
                 <div id="todoListCreatePort">
                     <div class="sectorHeading">新規作成</div>
                     <form action="javascript:registAcc()">
-                        <input onkeyup="checkFormContentRegist()" class="inputText" id="attMail" type="email" placeholder="リストの名前"><br>
+                        <input class="inputText" id="attMail" type="text" placeholder="リストの名前"><br>
                         <div class="userAddport">
                             <div id="addedUsersListFortodoListCreate">
                                 <div id="noFriendsMadeForSmall">
@@ -97,11 +97,11 @@
                                     <div style="margin-top: 25px">共有している友達がいません。</div>
                                 </div>
                             </div>
-                            <button class="btnDull" onclick="openSmallFriendAddTool()">友達を追加</button>
+                            <button class="btn" onclick="openSmallFriendAddTool()">友達を追加</button>
                             <div id="addFriendsSmallModal" class="modal">
                                 <!-- Modal content -->
                                 <div class="modal-content friendsSmallModal">
-                                    <div style="text-align: right; width: 90%; margin-right: auto; margin-left: auto; margin-top: 10px; margin-bottom: 10px;">
+                                    <div class="xWrapperwBorder">
                                         <span class="close">&times;</span>
                                     </div>
                                     <div id="smallFriendWrapperForNewToDoList">
@@ -109,10 +109,11 @@
                                     </div>
                                 </div>
                             </div>
-                            <button class="btnDull">リンクを取得</button><br><br>
+                            <button class="btn">リストのURLを取得</button><br><br>
                         </div>
 
                         <input type="submit" id="registSubmitBtn" class="btn" value="作成する" disabled>
+                        <button class="btnDull" onclick="cancelToDoListCreation()">キャンセル</button>
                     </form>
                 </div>
                 <div id="edCreatePort">
@@ -130,8 +131,29 @@
                 <div id="noFriendsMadeForSmall">
                     <img src="data:image/svg+xml;utf8;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iaXNvLTg4NTktMSI/Pgo8IS0tIEdlbmVyYXRvcjogQWRvYmUgSWxsdXN0cmF0b3IgMTkuMC4wLCBTVkcgRXhwb3J0IFBsdWctSW4gLiBTVkcgVmVyc2lvbjogNi4wMCBCdWlsZCAwKSAgLS0+CjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgdmVyc2lvbj0iMS4xIiBpZD0iQ2FwYV8xIiB4PSIwcHgiIHk9IjBweCIgdmlld0JveD0iMCAwIDUxMiA1MTIiIHN0eWxlPSJlbmFibGUtYmFja2dyb3VuZDpuZXcgMCAwIDUxMiA1MTI7IiB4bWw6c3BhY2U9InByZXNlcnZlIiB3aWR0aD0iMTI4cHgiIGhlaWdodD0iMTI4cHgiPgo8Zz4KCTxnPgoJCTxwYXRoIGQ9Ik0xMjMuMTcsMTg1Ljc1NmMtOS41MTUtNy40MzMtMjMuMzA0LTUuNzQtMzAuNzM4LDMuNzc0Yy0yLjU1LDMuMjY0LTEuOTcxLDcuOTc3LDEuMjkyLDEwLjUyOCAgICBjMS4zNzEsMS4wNzEsMi45OTgsMS41OSw0LjYxMiwxLjU5YzIuMjI5LDAsNC40MzYtMC45OSw1LjkxNS0yLjg4M2MyLjM0My0yLjk5OCw2LjY4Ny0zLjUzLDkuNjgzLTEuMTg5ICAgIGMzLjI2NCwyLjU1LDcuOTc3LDEuOTcxLDEwLjUyNy0xLjI5M0MxMjcuMDEzLDE5My4wMTksMTI2LjQzNCwxODguMzA2LDEyMy4xNywxODUuNzU2eiIgZmlsbD0iIzkwOTA5MCIvPgoJPC9nPgo8L2c+CjxnPgoJPGc+CgkJPHBhdGggZD0iTTIwMC4xNjMsMTc2LjMwM2MtOS41MTYtNy40MzQtMjMuMzA1LTUuNzQxLTMwLjczOCwzLjc3NGMtMi41NSwzLjI2NC0xLjk3Miw3Ljk3NywxLjI5MiwxMC41MjggICAgYzEuMzcxLDEuMDcxLDIuOTk4LDEuNTksNC42MTIsMS41OWMyLjIyOSwwLDQuNDM2LTAuOTksNS45MTUtMi44ODNjMi4zNDItMi45OTgsNi42ODUtMy41MzIsOS42ODMtMS4xODkgICAgYzMuMjY0LDIuNTUsNy45NzcsMS45NzEsMTAuNTI4LTEuMjkyQzIwNC4wMDUsMTgzLjU2NywyMDMuNDI2LDE3OC44NTQsMjAwLjE2MywxNzYuMzAzeiIgZmlsbD0iIzkwOTA5MCIvPgoJPC9nPgo8L2c+CjxnPgoJPGc+CgkJPHBhdGggZD0iTTE5MS40OTcsMjMzLjk1NWwtMC44NTUtNi45N2MtMC4zNy0zLjAxNS0xLjg5Mi01LjcwNS00LjI4Ni03LjU3NmMtMi4zOTQtMS44Ny01LjM3Mi0yLjY5My04LjM4Ni0yLjMyNmwtNDMuMDcxLDUuMjg4ICAgIGMtMy4wMTUsMC4zNy01LjcwNSwxLjg5Mi03LjU3NSw0LjI4NmMtMS44NzEsMi4zOTQtMi42OTYsNS4zNzItMi4zMjYsOC4zODZsMC44NTYsNi45NzIgICAgYzIuMjIzLDE4LjEwMSwxOC43NTMsMzEuMDEzLDM2Ljg1MiwyOC43OTJDMTgwLjgwNCwyNjguNTg1LDE5My43MiwyNTIuMDUzLDE5MS40OTcsMjMzLjk1NXogTTE2MC44NzgsMjU1LjkxOCAgICBjLTkuODc4LDEuMjIyLTE4LjkyMS01Ljg0My0yMC4xMzUtMTUuNzMybC0wLjQxNC0zLjM2OWwzNS44NjctNC40MDNsMC40MTQsMy4zNjkgICAgQzE3Ny44MjQsMjQ1LjY3MiwxNzAuNzY3LDI1NC43MDQsMTYwLjg3OCwyNTUuOTE4eiIgZmlsbD0iIzkwOTA5MCIvPgoJPC9nPgo8L2c+CjxnPgoJPGc+CgkJPHBhdGggZD0iTTI0NS42OTMsMzQuNTczQzIzOC4zMzIsMTguOCwyMjUuODA2LDcuMDI5LDIwOS40NjksMC41MzJjLTMuNTktMS40MjctNy42NzcsMC4xMDUtOS40NDIsMy41NDEgICAgYy04LjA2OSwxNS43MDQtMjcuNTYyLDI2Ljg4MS01Mi4xNDIsMjkuODk5bC00My4zNyw1LjMyNWMtNC4xMTEsMC41MDQtNy4wMzUsNC4yNDctNi41Myw4LjM1OCAgICBjMC41MDQsNC4xMTIsNC4yNTEsNy4wMzQsOC4zNTgsNi41M2w0My4zNy01LjMyNWMyNi4zOTEtMy4yNDEsNDguMjEtMTQuOTIxLDU5LjkyNy0zMS43NDUgICAgYzI0LjQ0NSwxMy4wNTIsMzAuMzc3LDQwLjQxMiwyNy43MjcsNjAuOTgyYy0yLjc1NSwyMS4zODItMTMuOTk3LDM3LjQ1OS0yNy4zMzcsMzkuMDk3TDY0LjEwMSwxMzUuMTEzICAgIGMtMTIuMTEyLDEuNDg3LTIwLjc1NiwxMi41NTItMTkuMjY5LDI0LjY2NGwxLjc5MywxNC42MDRsLTExLjM2NiwxLjM5NmwtMTEuMzkzLTkyLjc5Yy0wLjYwNC00LjkxNCwwLjc0My05Ljc2OSwzLjc5LTEzLjY3ICAgIGMzLjA0OC0zLjkwMSw3LjQzMy02LjM4MiwxMi4zNDctNi45ODVsMzYuNDAxLTQuNDY5YzQuMTExLTAuNTA1LDcuMDM1LTQuMjQ3LDYuNTMtOC4zNThzLTQuMjQ5LTcuMDMxLTguMzU4LTYuNTNsLTM2LjQwMSw0LjQ3ICAgIEMxOS44MjIsNDkuNjk3LDYuNzI0LDY2LjQ2MSw4Ljk3OCw4NC44MTRsMTEuNzc2LDk1LjkxMmMtNy42MDUsNS40MjMtMTEuODc1LDE0LjY5Ny0xMC42OTUsMjQuMjY4ICAgIGMxLjU5OCwxMi45NzcsMTIuNjQ4LDIyLjc2MywyNS43MDMsMjIuNzYzYzEuMDE2LDAsMi4wNzYtMC4wNjQsMy4xODYtMC4xOTZsMTMuOTk1LTEuNzI0bDEuMzc0LDExLjE3NCAgICBjMi44NzUsMjMuNDE4LDE0LjY5OCw0NC4zMTUsMzMuMjg5LDU4Ljg0MWMxNS42ODYsMTIuMjU3LDM0LjYwNSwxOC43NCw1NC4xOTksMTguNzRjMy42MjksMCw3LjI4My0wLjIyMywxMC45NDEtMC42NzIgICAgYzExLjMtMS4zOSwyMi4wMzMtNC44NTgsMzEuODk3LTEwLjMwN2M5LjU1My01LjI3LDE3Ljk1OC0xMi4xOSwyNC45ODMtMjAuNTY3YzIuNjYyLTMuMTc0LDIuMjQ3LTcuOTA0LTAuOTI3LTEwLjU2NiAgICBjLTMuMTc0LTIuNjYyLTcuOTA0LTIuMjQ2LTEwLjU2NiwwLjkyN2MtNS44MzIsNi45NTQtMTIuODA5LDEyLjY5OS0yMC43MzksMTcuMDc0Yy04LjE4Miw0LjUxOS0xNy4wOSw3LjM5Ni0yNi40NzcsOC41NTEgICAgYy0xOS40MzcsMi4zODctMzguNjQyLTIuOTQtNTQuMDc1LTE0Ljk5OWMtMTUuNDM0LTEyLjA2LTI1LjI0OS0yOS40MDgtMjcuNjM2LTQ4Ljg1MWwtMi4yOS0xOC42MiAgICBjLTAuMjQzLTEuOTc0LTEuMjYtMy43NzEtMi44MjgtNC45OTZjLTEuNTY4LTEuMjI1LTMuNTU2LTEuNzc3LTUuNTMyLTEuNTMzbC0yMS40MDUsMi42MzdjLTAuNDkyLDAuMDU5LTAuOTU5LDAuMDg4LTEuMzg5LDAuMDg4ICAgIGMtNS40OTMsMC0xMC4xNDItNC4xMjUtMTAuODE2LTkuNTk3Yy0wLjYwMi00Ljg4MiwyLjE1Mi05LjU4NSw2LjY5Ni0xMS40MzdjMC4wMDgtMC4wMDMsMC4wMTUtMC4wMDgsMC4wMjMtMC4wMTEgICAgYzAuODgxLTAuMzYyLDEuODItMC42MDcsMi43ODktMC43MjZsMjEuNDQyLTIuNjMzYzQuMTExLTAuNTA0LDcuMDM1LTQuMjQ3LDYuNTMtOC4zNThsLTIuNzA3LTIyLjA0OSAgICBjLTAuNDc5LTMuOTAzLDIuMzA3LTcuNDY5LDYuMjA5LTcuOTQ4bDEzOC40ODEtMTcuMDAzbDEwLjM1Niw4NC4zMThjMS4zNTYsMTEuMDA4LDAuMjU4LDIxLjg4My0zLjI2MywzMi4zMjYgICAgYy0xLjMyMywzLjkyNSwwLjc4NSw4LjE4LDQuNzEsOS41MDNjMC43OTUsMC4yNjgsMS42MDMsMC4zOTUsMi4zOTcsMC4zOTVjMy4xMywwLDYuMDUtMS45NzUsNy4xMDYtNS4xMDUgICAgYzQuMjQ2LTEyLjU5LDUuNTctMjUuNjk2LDMuOTM3LTM4Ljk1bC0xMC40NTgtODUuMTQ2YzE2LjkzLTYuMDMsMjkuODE0LTI1LjIxMSwzMy4wNS01MC4zMjIgICAgQzI1NC4yODksNjQuMTQ0LDI1MS45NjMsNDguMDA2LDI0NS42OTMsMzQuNTczeiIgZmlsbD0iIzkwOTA5MCIvPgoJPC9nPgo8L2c+CjxnPgoJPGc+CgkJPHBhdGggZD0iTTQxOS41NjYsMzg2LjkzOGMtNy40MzMtOS41MTUtMjEuMjIzLTExLjIwOC0zMC43MzgtMy43NzRjLTMuMjY0LDIuNTUtMy44NDMsNy4yNjQtMS4yOTIsMTAuNTI4ICAgIGMyLjU1LDMuMjY0LDcuMjYzLDMuODQzLDEwLjUyOCwxLjI5MmMyLjk5Ny0yLjM0Myw3LjM0MS0xLjgwOCw5LjY4MywxLjE4OWMxLjQ3OSwxLjg5MywzLjY4NiwyLjg4Myw1LjkxNSwyLjg4MyAgICBjMS42MTUsMCwzLjI0MS0wLjUyLDQuNjEyLTEuNTkxQzQyMS41MzgsMzk0LjkxNSw0MjIuMTE2LDM5MC4yMDIsNDE5LjU2NiwzODYuOTM4eiIgZmlsbD0iIzkwOTA5MCIvPgoJPC9nPgo8L2c+CjxnPgoJPGc+CgkJPHBhdGggZD0iTTM0Mi41NzQsMzc3LjQ4NWMtNy40MzMtOS41MTQtMjEuMjIyLTExLjIwOS0zMC43MzctMy43NzRjLTMuMjY0LDIuNTUtMy44NDMsNy4yNjMtMS4yOTMsMTAuNTI3ICAgIGMyLjU0OSwzLjI2Myw3LjI2MiwzLjg0NCwxMC41MjcsMS4yOTNjMi45OTctMi4zNDEsNy4zNDEtMS44MDksOS42ODQsMS4xODljMS40NzksMS44OTMsMy42ODUsMi44ODMsNS45MTUsMi44ODMgICAgYzEuNjE1LDAsMy4yNDEtMC41Miw0LjYxMi0xLjU5QzM0NC41NDYsMzg1LjQ2MywzNDUuMTI0LDM4MC43NDksMzQyLjU3NCwzNzcuNDg1eiIgZmlsbD0iIzkwOTA5MCIvPgoJPC9nPgo8L2c+CjxnPgoJPGc+CgkJPHBhdGggZD0iTTM3Ny4xMDEsNDE5Ljc4bC00My4wNzMtNS4yODljLTMuMDEzLTAuMzY3LTUuOTkzLDAuNDU3LTguMzg1LDIuMzI2Yy01LjM4Niw0LjIwNy00LjEyOCw5Ljg2OS01LjE0MSwxNC41NDYgICAgYy0zLjYwNywyOS4zNzIsMzAuMjE1LDQ4LjAyOSw1My4xOCwzMC4wODhjMTMuODAyLTEwLjc4MywxMi40MTYtMjUuNjU0LDEzLjMxOS0yOC45OTkgICAgQzM4Ny43NjUsNDI2LjIzLDM4My4zMjUsNDIwLjU0NSwzNzcuMTAxLDQxOS43OHogTTM2NC40NDcsNDQ5LjYzMWMtMy44MDMsMi45NzEtOC41MzUsNC4yODMtMTMuMzI2LDMuNjk2ICAgIGMtOS45MTEtMS4yMTYtMTYuOTQ4LTEwLjIyMi0xNS43MzItMjAuMTM1bDAuNDE0LTMuMzdsMzUuODY3LDQuNDA0QzM3MS4yMzMsNDM1LjgxNiwzNzEuODk1LDQ0My44MTIsMzY0LjQ0Nyw0NDkuNjMxeiIgZmlsbD0iIzkwOTA5MCIvPgoJPC9nPgo8L2c+CjxnPgoJPGc+CgkJPHBhdGggZD0iTTQ5Ni4xNjIsMjU3LjQ4OWMtNS41MTUtNy4wNTgtMTMuNDQ4LTExLjU0Ny0yMi4zMzktMTIuNjM4bC0xMDMuMDU3LTEyLjY1NGMtMy44NDctMC40NzItNy4zNjQtMi41NjMtOS42NTEtNS43MzYgICAgYy03LjEzNi05LjkwMy0xNi44NDEtMTcuNTg0LTI4LjA2NS0yMi4yMTRjLTMuODMtMS41NzktOC4yMTQsMC4yNDUtOS43OTMsNC4wNzRjLTEuNTc5LDMuODMsMC4yNDUsOC4yMTQsNC4wNzQsOS43OTMgICAgYzguNjQsMy41NjMsMTYuMTE0LDkuNDgyLDIxLjYxNSwxNy4xMTZjNC43MjMsNi41NTQsMTIuMDEsMTAuODc1LDE5Ljk5MiwxMS44NTVsMTAzLjA1NywxMi42NTQgICAgYzEwLjE0NCwxLjI0NiwxNy4zODQsMTAuNTEyLDE2LjEzNywyMC42NTVsLTExLjM5Miw5Mi43OWwtMTEuMzY3LTEuMzk2bDEuNzkzLTE0LjYwNWMxLjQ4Ni0xMi4xMTItNy4xNTgtMjMuMTc2LTE5LjI3LTI0LjY2MyAgICBsLTE0NS45MjktMTcuOTE4Yy0xMy43MTEtMS42ODQtMjUuODMtOC42OTctMzQuMTI1LTE5Ljc0OWMtOC4yOS0xMS4wNDUtMTEuNjM0LTI0LjY1Ny05LjQxNS0zOC4zMyAgICBjMy41NjctMjEuOTgzLDIxLjU1My0zOS4xOTksNDMuNzM4LTQxLjg2NmM0LjExMi0wLjQ5NCw3LjA0Ni00LjIyOCw2LjU1MS04LjM0MWMtMC40OTQtNC4xMTItNC4yMzEtNy4wNDktOC4zNDEtNi41NTEgICAgYy0yOC43ODQsMy40NTktNTIuMTIzLDI1LjgxMi01Ni43NTUsNTQuMzU2Yy0yLjg3NywxNy43MzYsMS40NjQsMzUuMzk5LDEyLjIyNSw0OS43MzdjOS4yNDksMTIuMzIyLDIyLjE2NywyMC43NjIsMzYuOTA3LDI0LjI4NiAgICBsLTEwLjQwOSw4NC43NDZjLTEuMzg3LDExLjI4Ny0wLjYxOCwyMi41NDYsMi4yODYsMzMuNDYyYzAuODkzLDMuMzU3LDMuOTI2LDUuNTc0LDcuMjQzLDUuNTc0YzAuNjM4LDAsMS4yODctMC4wODIsMS45MzMtMC4yNTQgICAgYzQuMDAzLTEuMDY1LDYuMzg1LTUuMTczLDUuMzItOS4xNzZjLTIuNDA5LTkuMDU2LTMuMDQ2LTE4LjQwMS0xLjg5NC0yNy43NzhsMTAuMzU1LTg0LjMxNGwxMzguNDgxLDE3LjAwMyAgICBjMy45MDMsMC40NzksNi42ODksNC4wNDUsNi4yMSw3Ljk0OGwtMi43MDgsMjIuMDQ5Yy0wLjI0MiwxLjk3NCwwLjMxLDMuOTY0LDEuNTM0LDUuNTMyYzEuMjI1LDEuNTY3LDMuMDIyLDIuNTg0LDQuOTk2LDIuODI2ICAgIGwyMS40NDIsMi42MzNjMC45MTIsMC4xMTIsMS43OTQsMC4zNDUsMi42MzEsMC42NzNjNC42NjcsMS43OTcsNy40OTIsNi41MDIsNi44NzgsMTEuNTAxYy0wLjY3Myw1LjQ3MS01LjMyMyw5LjU5Ni0xMC44MTYsOS41OTYgICAgYy0wLjQyOSwwLTAuODk1LTAuMDI5LTEuMzU0LTAuMDg0bC0yMS40NC0yLjY0Yy0xLjk3NS0wLjI0NC0zLjk2NSwwLjMwOS01LjUzMywxLjUzM3MtMi41ODUsMy4wMjEtMi44MjgsNC45OTZsLTIuMjksMTguNjIxICAgIGMtMi4zODcsMTkuNDQyLTEyLjIwMiwzNi43OS0yNy42MzYsNDguODVDMzk5LjcyLDQ5My41LDM4MC41Miw0OTguODMsMzYxLjA3Niw0OTYuNDRjLTEwLjIwMS0xLjI1LTE5LjgxNy00LjUzMy0yOC41ODEtOS43NTggICAgYy04LjQ3NS01LjA1Mi0xNS43NDEtMTEuNjU2LTIxLjU5NS0xOS42MjdjLTIuNDUyLTMuMzM5LTcuMTQ2LTQuMDU2LTEwLjQ4NC0xLjYwNWMtMy4zMzgsMi40NTItNC4wNTcsNy4xNDYtMS42MDUsMTAuNDg0ICAgIGM3LjA0OCw5LjU5NiwxNS43OTcsMTcuNTQ3LDI2LjAwNSwyMy42MzJjMTAuNTY3LDYuMywyMi4xNTQsMTAuMjU4LDM0LjQzNiwxMS43NjJjMy42NiwwLjQ1LDcuMzEsMC42NzIsMTAuOTQsMC42NzIgICAgYzE5LjU5MiwwLDM4LjUxNC02LjQ4NCw1NC4xOTktMTguNzRjMTguNTkxLTE0LjUyNywzMC40MTMtMzUuNDI0LDMzLjI4OC01OC44NGwxLjM3NC0xMS4xNzUgICAgYzEzLjM4OCwxLjU5LDE0LjQzLDEuOTE5LDE3LjE4MiwxLjkxOWMxMy4wNTUsMCwyNC4xMDYtOS43ODYsMjUuNzA0LTIyLjc2NmMxLjE4Ny05LjY3OC0zLjA2My0xOC44OTgtMTAuNjkyLTI0LjI5MiAgICBsMTEuNzcyLTk1Ljg4NUM1MDQuMTEzLDI3My4zMzEsNTAxLjY3NywyNjQuNTQ4LDQ5Ni4xNjIsMjU3LjQ4OXoiIGZpbGw9IiM5MDkwOTAiLz4KCTwvZz4KPC9nPgo8Zz4KCTxnPgoJCTxwYXRoIGQ9Ik0zODkuOTgyLDYyLjkxNGMtNC4xNDIsMC03LjUsMy4zNTgtNy41LDcuNXYxOC4zNTljMCw0LjE0MiwzLjM1OCw3LjUsNy41LDcuNWM0LjE0MiwwLDcuNS0zLjM1OCw3LjUtNy41VjcwLjQxNCAgICBDMzk3LjQ4Miw2Ni4yNzIsMzk0LjEyNCw2Mi45MTQsMzg5Ljk4Miw2Mi45MTR6IiBmaWxsPSIjOTA5MDkwIi8+Cgk8L2c+CjwvZz4KPGc+Cgk8Zz4KCQk8cGF0aCBkPSJNMzg5Ljk4MiwxMTkuMzVjLTQuMTQyLDAtNy41LDMuMzU4LTcuNSw3LjV2MTguMzU5YzAsNC4xNDIsMy4zNTgsNy41LDcuNSw3LjVjNC4xNDIsMCw3LjUtMy4zNTgsNy41LTcuNVYxMjYuODUgICAgQzM5Ny40ODIsMTIyLjcwOCwzOTQuMTI0LDExOS4zNSwzODkuOTgyLDExOS4zNXoiIGZpbGw9IiM5MDkwOTAiLz4KCTwvZz4KPC9nPgo8Zz4KCTxnPgoJCTxwYXRoIGQ9Ik00MjcuMzgsMTAwLjMxMmgtMTguMzU5Yy00LjE0MiwwLTcuNSwzLjM1OC03LjUsNy41YzAsNC4xNDIsMy4zNTgsNy41LDcuNSw3LjVoMTguMzU5YzQuMTQyLDAsNy41LTMuMzU4LDcuNS03LjUgICAgQzQzNC44OCwxMDMuNjcsNDMxLjUyMiwxMDAuMzEyLDQyNy4zOCwxMDAuMzEyeiIgZmlsbD0iIzkwOTA5MCIvPgoJPC9nPgo8L2c+CjxnPgoJPGc+CgkJPHBhdGggZD0iTTM3MC45NDQsMTAwLjMxMmgtMTguMzU5Yy00LjE0MiwwLTcuNSwzLjM1OC03LjUsNy41YzAsNC4xNDIsMy4zNTgsNy41LDcuNSw3LjVoMTguMzU5YzQuMTQyLDAsNy41LTMuMzU4LDcuNS03LjUgICAgQzM3OC40NDQsMTAzLjY3LDM3NS4wODYsMTAwLjMxMiwzNzAuOTQ0LDEwMC4zMTJ6IiBmaWxsPSIjOTA5MDkwIi8+Cgk8L2c+CjwvZz4KPGc+Cgk8Zz4KCQk8cGF0aCBkPSJNMTIyLjAxNywzNTkuMjg2Yy00LjE0MiwwLTcuNSwzLjM1OC03LjUsNy41djE4LjM1OWMwLDQuMTQyLDMuMzU4LDcuNSw3LjUsNy41YzQuMTQyLDAsNy41LTMuMzU4LDcuNS03LjV2LTE4LjM1OSAgICBDMTI5LjUxNywzNjIuNjQ0LDEyNi4xNTksMzU5LjI4NiwxMjIuMDE3LDM1OS4yODZ6IiBmaWxsPSIjOTA5MDkwIi8+Cgk8L2c+CjwvZz4KPGc+Cgk8Zz4KCQk8cGF0aCBkPSJNMTIyLjAxNyw0MTUuNzIzYy00LjE0MiwwLTcuNSwzLjM1OC03LjUsNy41djE4LjM1OWMwLDQuMTQyLDMuMzU4LDcuNSw3LjUsNy41YzQuMTQyLDAsNy41LTMuMzU4LDcuNS03LjV2LTE4LjM1OSAgICBDMTI5LjUxNyw0MTkuMDgsMTI2LjE1OSw0MTUuNzIzLDEyMi4wMTcsNDE1LjcyM3oiIGZpbGw9IiM5MDkwOTAiLz4KCTwvZz4KPC9nPgo8Zz4KCTxnPgoJCTxwYXRoIGQ9Ik0xNTkuNDE0LDM5Ni42ODRoLTE4LjM1OWMtNC4xNDIsMC03LjUsMy4zNTgtNy41LDcuNWMwLDQuMTQyLDMuMzU4LDcuNSw3LjUsNy41aDE4LjM1OWM0LjE0MiwwLDcuNS0zLjM1OCw3LjUtNy41ICAgIEMxNjYuOTE0LDQwMC4wNDIsMTYzLjU1NywzOTYuNjg0LDE1OS40MTQsMzk2LjY4NHoiIGZpbGw9IiM5MDkwOTAiLz4KCTwvZz4KPC9nPgo8Zz4KCTxnPgoJCTxwYXRoIGQ9Ik0xMDIuOTc4LDM5Ni42ODRIODQuNjJjLTQuMTQyLDAtNy41LDMuMzU4LTcuNSw3LjVjMCw0LjE0MiwzLjM1OCw3LjUsNy41LDcuNWgxOC4zNTljNC4xNDIsMCw3LjUtMy4zNTgsNy41LTcuNSAgICBDMTEwLjQ3OSw0MDAuMDQyLDEwNy4xMiwzOTYuNjg0LDEwMi45NzgsMzk2LjY4NHoiIGZpbGw9IiM5MDkwOTAiLz4KCTwvZz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8L3N2Zz4K" /><br>
                     <div style="margin-top: 25px">友達がいません。</div>
-                    <button class="btn">友達をメールアドレスで探す</button>
+                    <button class="btn" onclick="shouFSAAM()">友達をメールアドレスで追加</button>
                 </div>
+
+                <!-- The Modal -->
+                <div id="friendSearchAndAddModal" class="modal">
+
+                    <!-- Modal content -->
+                    <div class="modal-content friendSearchAndAddModal">
+                        <div class="xWrapperwBorder">
+                            <span class="close">&times;</span>
+                        </div>
+                        <div class="friendSearchAndAddModalChild">
+                            <input type="email" class="inputText" spellcheck="false" onkeyup="checkUserExist(this)" placeholder="友達のメールアドレスを入力"><br>
+                            <div id="whoIsItByMail" style="margin-top: 10px;display: none;"><span><span id="accountName">--</span>さんのアカウント</span></div>
+                            <div id="UserDoesNotExist" style="margin-top: 10px;display: none;"><span>入力されたメールアドレスは登録されていません。</span></div>
+                            <div id="NotYourself" style="margin-top: 10px;display: none;">自身のアカウントを追加することはできません</div>
+                            <br>
+                            <button class="btn" id="addFriendBtn" onclick="addFriendServerPlease()" disabled>友達を追加する</button>
+                        </div>
+                    </div>
+
+                </div>
+
                 <div id="friendsList">
 
                 </div>
