@@ -2,7 +2,6 @@ var splashPort = document.getElementById("splashPort");
 var accountPort = document.getElementById("accountPort");
 var todoListport = document.getElementById("todoListport");
 var friendsPort = document.getElementById("friendsPort");
-var settingsPort = document.getElementById("settingsPort");
 
 var createAccountPort = document.getElementById("createAccountPort");
 var loginPort = document.getElementById("loginPort");
@@ -10,13 +9,18 @@ var loginPort = document.getElementById("loginPort");
 accountPort.style.display = "none";
 todoListport.style.display = "none";
 friendsPort.style.display = "none";
-settingsPort.style.display = "none";
 
 function init() {
     document.getElementById("logoLarge").style.opacity = "1";
+    document.getElementById("allListPort").style.height = (window.innerHeight - 70 - 74) + "px";
+    document.getElementById("noListsMade").style.height = (window.innerHeight - 70 - 199) + "px";
     setTimeout( function () {
         if(localStorage.testLogStateOne) {
-            todoListport.style.display = "block";
+            if( localStorage.testLogStateOne == "loggedIn" ) {
+                todoListport.style.display = "block";
+            } else {
+                todoListport.style.display = "none";
+            }
         } else {
             accountPort.style.display = "block";
         }
@@ -55,10 +59,6 @@ function checkFormContentRegist() {
     var attNameV = document.getElementById("attName").value;
     var attPassV = document.getElementById("attPass").value;
     var attPassCheckV = document.getElementById("attPassCheck").value;
-    console.log(attMailV.length);
-    console.log(attNameV.length);
-    console.log(attPassV.length);
-    console.log(attPassCheckV.length);
     if( attMailV.length != 0 && attNameV.length != 0 && attPassV.length != 0 && attPassCheckV.length != 0 ) {
         if( attPassV == attPassCheckV ) {
             document.getElementById("registSubmitBtn").disabled = false;
@@ -79,5 +79,29 @@ function checkFormContentLogin() {
         document.getElementById("loginSubmitBtn").disabled = false;
     } else {
         document.getElementById("loginSubmitBtn").disabled = true;
+    }
+}
+
+//third party modal execScript
+// Get the modal
+var modal = document.getElementById('newListTypeSelect');
+
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName("close")[0];
+
+// When the user clicks the button, open the modal
+function newList() {
+    modal.style.display = "block";
+}
+
+// When the user clicks on <span> (x), close the modal
+span.onclick = function() {
+    modal.style.display = "none";
+}
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+    if (event.target == modal) {
+        modal.style.display = "none";
     }
 }
