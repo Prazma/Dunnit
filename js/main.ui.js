@@ -99,6 +99,7 @@ var modal = document.getElementById('newListTypeSelect');
 
 // Get the <span> element that closes the modal
 var span = document.getElementsByClassName("close")[0];
+var spanTwo = document.getElementsByClassName("close")[1];
 
 // When the user clicks the button, open the modal
 function newList() {
@@ -116,6 +117,7 @@ window.onclick = function(event) {
         modal.style.display = "none";
     }
 }
+//end third party modal execScript
 
 function selectWindow(mode) {
     if( mode == "list" ) {
@@ -157,4 +159,19 @@ function selectWindow(mode) {
 function createToDoList() {
     modal.style.display = "none";
     todoListCreatePort.style.display = "block";
+}
+
+var addFriendsSmallModal = document.getElementById("addFriendsSmallModal");
+function openSmallFriendAddTool() {
+    addFriendsSmallModal.style.display = "block";
+}
+
+window.onclick = function(event) {
+    if (event.target == addFriendsSmallModal) {
+        addFriendsSmallModal.style.display = "none";
+    }
+}
+
+spanTwo.onclick = function () {
+    addFriendsSmallModal.style.display = "none";
 }

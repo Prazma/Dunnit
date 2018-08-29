@@ -371,3 +371,13 @@ input:disabled {
     color: #909090;
     text-align: center;
 }
+.friendsSmallModal {
+    position: fixed;
+    top: 10vh;
+    width: 90%;
+    margin-right: auto;
+    margin-left: auto;
+    left: 5%;
+    height: 70vh;
+    border-radius: 6px;
+}
