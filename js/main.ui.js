@@ -12,6 +12,8 @@ var friendsBottomMenuBtnNotSelected = document.getElementById("friendsBottomMenu
 var activityBottomMenuBtnSelected = document.getElementById("activityBottomMenuBtnSelected");
 var activityBottomMenuBtnNotSelected = document.getElementById("activityBottomMenuBtnNotSelected");
 
+var todoListCreatePort = document.getElementById("todoListCreatePort");
+
 accountPort.style.display = "none";
 todoListport.style.display = "none";
 
@@ -21,8 +23,8 @@ var activityport = document.getElementById("activityport");
 
 function init() {
     document.getElementById("logoLarge").style.opacity = "1";
-    document.getElementById("allListPort").style.height = (window.innerHeight - 70 - 74) + "px";
-    document.getElementById("noListsMade").style.height = (window.innerHeight - 70 - 199) + "px";
+    document.getElementById("allListPort").style.height = (window.innerHeight - 70 - 89) + "px";
+    document.getElementById("noListsMade").style.height = (window.innerHeight - 70 - 214) + "px";
     setTimeout( function () {
         if(localStorage.testLogStateOne) {
             if( localStorage.testLogStateOne == "loggedIn" ) {
@@ -150,4 +152,9 @@ function selectWindow(mode) {
         activityBottomMenuBtnSelected.style.display = "inline-block";
         activityBottomMenuBtnNotSelected.style.display = "none";
     }
+}
+
+function createToDoList() {
+    modal.style.display = "none";
+    todoListCreatePort.style.display = "block";
 }
