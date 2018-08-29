@@ -1,14 +1,23 @@
 var splashPort = document.getElementById("splashPort");
 var accountPort = document.getElementById("accountPort");
 var todoListport = document.getElementById("todoListport");
-var friendsPort = document.getElementById("friendsPort");
 
 var createAccountPort = document.getElementById("createAccountPort");
 var loginPort = document.getElementById("loginPort");
 
+var listBottomMenuBtnSelected = document.getElementById("listBottomMenuBtnSelected");
+var listBottomMenuBtnNotSelected = document.getElementById("listBottomMenuBtnNotSelected");
+var friendsBottomMenuBtnSelected = document.getElementById("friendsBottomMenuBtnSelected");
+var friendsBottomMenuBtnNotSelected = document.getElementById("friendsBottomMenuBtnNotSelected");
+var activityBottomMenuBtnSelected = document.getElementById("activityBottomMenuBtnSelected");
+var activityBottomMenuBtnNotSelected = document.getElementById("activityBottomMenuBtnNotSelected");
+
 accountPort.style.display = "none";
 todoListport.style.display = "none";
-friendsPort.style.display = "none";
+
+var listport = document.getElementById("listport");
+var friendsport = document.getElementById("friendsport");
+var activityport = document.getElementById("activityport");
 
 function init() {
     document.getElementById("logoLarge").style.opacity = "1";
@@ -103,5 +112,42 @@ span.onclick = function() {
 window.onclick = function(event) {
     if (event.target == modal) {
         modal.style.display = "none";
+    }
+}
+
+function selectWindow(mode) {
+    if( mode == "list" ) {
+        listport.style.display = "block";
+        friendsport.style.display = "none";
+        activityport.style.display = "none";
+
+        listBottomMenuBtnSelected.style.display = "inline-block";
+        listBottomMenuBtnNotSelected.style.display = "none";
+        friendsBottomMenuBtnSelected.style.display = "none";
+        friendsBottomMenuBtnNotSelected.style.display = "inline-block";
+        activityBottomMenuBtnSelected.style.display = "none";
+        activityBottomMenuBtnNotSelected.style.display = "inline-block";
+    } else if ( mode == "friends" ) {
+        listport.style.display = "none";
+        friendsport.style.display = "block";
+        activityport.style.display = "none";
+
+        listBottomMenuBtnSelected.style.display = "none";
+        listBottomMenuBtnNotSelected.style.display = "inline-block";
+        friendsBottomMenuBtnSelected.style.display = "inline-block";
+        friendsBottomMenuBtnNotSelected.style.display = "none";
+        activityBottomMenuBtnSelected.style.display = "none";
+        activityBottomMenuBtnNotSelected.style.display = "inline-block";
+    } else if ( mode == "activity" ) {
+        listport.style.display = "none";
+        friendsport.style.display = "none";
+        activityport.style.display = "block";
+
+        listBottomMenuBtnSelected.style.display = "none";
+        listBottomMenuBtnNotSelected.style.display = "inline-block";
+        friendsBottomMenuBtnSelected.style.display = "none";
+        friendsBottomMenuBtnNotSelected.style.display = "inline-block";
+        activityBottomMenuBtnSelected.style.display = "inline-block";
+        activityBottomMenuBtnNotSelected.style.display = "none";
     }
 }
