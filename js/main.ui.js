@@ -40,6 +40,7 @@ function init() {
     document.getElementById("logoLarge").style.opacity = "1";
     document.getElementById("allListPort").style.height = (window.innerHeight - 70 - 89) + "px";
     document.getElementById("noListsMade").style.height = (window.innerHeight - 70 - 214) + "px";
+    document.getElementById("tdListsWrapper").style.height = (window.innerHeight - 70 - 214 + 15) + "px";
     setTimeout( function () {
         if(localStorage.testLogStateOne) {
             if( localStorage.testLogStateOne == "loggedIn" ) {

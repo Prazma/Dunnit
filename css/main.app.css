@@ -470,3 +470,37 @@ button:disabled {
     overflow: auto;
     border-bottom: 1px solid #909090;
 }
+#tdListsWrapper {
+    height: 70vh;
+    color: #909090;
+    text-align: center;
+    border-bottom: 1px solid #dde3ea;
+    overflow: auto;
+}
+.listColBtn {
+    width: 100%;
+    background: #fff;
+    border: none;
+    border-bottom: 1px solid #dde3ea;
+    text-align: left;
+}
+.listButtonContentWrapperOne {
+    width: 50%;
+    margin-left: 10px;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    display: inline-block;
+    font-size: 20px;
+    padding: 0px 5px 5px 5px;
+}
+.openBtn {
+    font-size: 15px;
+    background: #5ba5fe;
+    border: 1px solid #5ba5fe;
+    border-radius: 7px;
+    color: #fff;
+    padding: 4px 10px 4px 10px;
+    float: right;
+    margin-top: 9px;
+    margin-right: 25px;
+}

@@ -82,6 +82,11 @@ var startListening = function() {
             emaCont.push(vax.ema);
             pswCont.push(vax.psw);
             nmeCont.push(vax.nme);
+        } else if (vax.type == "tdlist") {
+            if( vax.owner == localStorage.loggedUserName ) {
+                document.getElementById("noListsMade").style.display = "none";
+                document.getElementById("tdListsWrapper").innerHTML += "<div class='listColBtn'><div class='listButtonContentWrapperOne'>"+vax.name+"</div><button class='openBtn'>開く</button></div>";
+            }
         }
 	});
 }
@@ -120,7 +125,10 @@ function addFriendServerPlease() {
 
 function createNewTDsubmit() {
     var listName = document.getElementById("listNameInputElement").value;
+    var listOwner = localStorage.loggedUserName;
     var memberString = sharedAccountsPreDatabaseToDoList.join("#");
-    var listId = localStorage.loggedUserName + listName;
-    db.push({type:"tdlist",name:listName,members:memberString,listId:listId});
+    var listId = localStorage.loggedUserName + "$" + listName;
+    var listDescription = document.getElementById("TDlistDescription").value;
+    db.push({type:"tdlist",name:listName,members:memberString,listId:listId,listDescription:listDescription,owner:listOwner});
+    todoListCreatePort.style.display = "none";
 }
