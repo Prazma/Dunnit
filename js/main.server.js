@@ -85,7 +85,7 @@ var startListening = function() {
         } else if (vax.type == "tdlist") {
             if( vax.owner == localStorage.loggedUserName ) {
                 document.getElementById("noListsMade").style.display = "none";
-                document.getElementById("tdListsWrapper").innerHTML += "<div class='listColBtn'><div class='listButtonContentWrapperOne'>"+vax.name+"</div><button class='openBtn'>開く</button></div>";
+                document.getElementById("tdListsWrapper").innerHTML += "<div class='listColBtn'><div class='listButtonContentWrapperOne'>"+vax.name+"</div><button class='openBtn' onclick='openToDoList("+")'>開く</button></div>";
             }
         }
 	});
