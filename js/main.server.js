@@ -1,15 +1,44 @@
+var mifriends = [];
+
+var addShareUserBtn = document.getElementById("addShareUserBtn");
+
 var attMail = document.getElementById("attMail");
 var attName = document.getElementById("attName");
 var attPass = document.getElementById("attPass");
 
+var addUserTip = document.getElementById("addUserTip");
+
+var friendAddEmail = document.getElementById("friendAddEmail");
+
 var addFriendBtn = document.getElementById("addFriendBtn");
 
-var accountPort = document.getElementById("accountPort");
+var accountManagementPort = document.getElementById("accountManagementPort");
+
+var friendsList = document.getElementById("friendsList");
 
 var lgAttEm = document.getElementById("lgAttEm");
 var lgAttPsw = document.getElementById("lgAttPsw");
 
 var mailUseOrNot = document.getElementById("mailUseOrNot");
+
+var noFriendsMadeForNormal = document.getElementById("noFriendsMadeForNormal");
+
+var sharedAccountsPreDatabaseToDoList = [];
+var sharedAccountsEmailOnly = [];
+
+function addFriendToList() {
+    if( addShareUserBtn.value == "共有するユーザーを追加" ) {
+        sharedAccountsPreDatabaseToDoList.push(document.getElementById("shareSetEmail").value + "!" + document.getElementById("thisUserRest").innerHTML);
+        sharedAccountsEmailOnly.push(document.getElementById("shareSetEmail").value);
+        document.getElementById("addFriendsSmallModal").style.display = "none";
+        document.getElementById("shareSetEmail").value = "";
+        checkEmailState(document.getElementById("shareSetEmail"));
+        updateSharedFriendsList();
+    } else {
+
+    }
+}
+
 
 var db = new Firebase("https://pcboy-8cbb8.firebaseio.com/");
 var emaCont = [];
@@ -25,10 +54,8 @@ function registAcc() {
     var nmeAtt = attName.value;
     if( emaCont.indexOf(usrAtt) == -1 ) {
         db.push({type:"accountData",ema:usrAtt,psw:pswAtt,nme:nmeAtt});
-        accountPort.style.opacity = "0";
-        setTimeout( function () {
-            accountPort.style.display = "none";
-        }, 500)
+        accountPort.style.display = "none";
+        todoListport.style.display = "block";
     } else {
         mailUseOrNot.style.display = "block";
     }
@@ -51,42 +78,49 @@ function loginUsr() {
 var startListening = function() {
 	db.on('child_added', function(snapshot) {
         var vax = snapshot.val();
-        if(vax.type = "aci") {
+        if(vax.type == "accountData") {
             emaCont.push(vax.ema);
             pswCont.push(vax.psw);
             nmeCont.push(vax.nme);
-        } else if (vax.type="listData") {
-
         }
 	});
 }
 startListening();
 
-function checkUserExist(element) {
-    if( emaCont.indexOf(element.value) != -1 && element.value.length != 0 && element.value != localStorage.loggedUserName ) {
-        document.getElementById("accountName").innerHTML = nmeCont[emaCont.indexOf(element.value)];
-        document.getElementById("whoIsItByMail").style.display = "inline-block";
-        document.getElementById("UserDoesNotExist").style.display = "none";
-        document.getElementById("NotYourself").style.display = "none";
-        addFriendBtn.innerHTML = "友達を追加する";
-    } else if( emaCont.indexOf(element.value) == -1 && element.value.length != 0 && element.value != localStorage.loggedUserName ) {
-        document.getElementById("whoIsItByMail").style.display = "none";
-        document.getElementById("UserDoesNotExist").style.display = "inline-block";
-        document.getElementById("NotYourself").style.display = "none";
-        addFriendBtn.innerHTML = "友達をDunnitに招待する";
-    } else if ( element.value.length == 0 && element.value != localStorage.loggedUserName ) {
-        document.getElementById("whoIsItByMail").style.display = "none";
-        document.getElementById("UserDoesNotExist").style.display = "none";
-        document.getElementById("NotYourself").style.display = "none";
-    } else if ( element.value == localStorage.loggedUserName ) {
-        document.getElementById("whoIsItByMail").style.display = "none";
-        document.getElementById("UserDoesNotExist").style.display = "none";
-        document.getElementById("NotYourself").style.display = "inline-block";
+function checkEmailState(ele) {
+    if( ele.value.length != 0 && emaCont.indexOf(ele.value) != -1 && ele.value != localStorage.loggedUserName && sharedAccountsEmailOnly.indexOf(ele.value) == -1 ) {
+        addUserTip.innerHTML = "<strong>" + nmeCont[emaCont.indexOf(ele.value)] + "</strong>さんのアカウントで間違えないですか？";
+        addShareUserBtn.disabled = false;
+        addShareUserBtn.value = "共有するユーザーを追加";
+    } else if( ele.value.length == 0 ) {
+        addUserTip.innerHTML = "ToDoリストを共有するユーザーのメールアドレスを入力してください。";
+        addShareUserBtn.value = "共有するユーザーを追加";
+        addShareUserBtn.disabled = true;
+    } else if( emaCont.indexOf(ele.value) == -1 ) {
+        addUserTip.innerHTML = "このメールアドレスはまだ登録されていません。";
+        addShareUserBtn.disabled = false;
+        addShareUserBtn.value = "メールで招待する"
+    } else if( ele.value == localStorage.loggedUserName ) {
+        addUserTip.innerHTML = "自分のアカウントを追加することはできません。";
+        addShareUserBtn.value = "共有するユーザーを追加";
+        addShareUserBtn.disabled = true;
+    } else if( sharedAccountsEmailOnly.indexOf(ele.value) != -1 ) {
+        addUserTip.innerHTML = "このアカウントは追加済みです。";
+        addShareUserBtn.value = "共有するユーザーを追加";
+        addShareUserBtn.disabled = true;
     }
 }
 
 function addFriendServerPlease() {
-    if( addFriendBtn.innerHTML == "" ) {
-
+    if( addFriendBtn.innerHTML == "友達を追加する" ) {
+        db.push({type:"friendConnectionData",target:localStorage.loggedUserName,who:friendAddEmail.value});
+        friendSearchAndAddModal.style.display = "none";
     }
+}
+
+function createNewTDsubmit() {
+    var listName = document.getElementById("listNameInputElement").value;
+    var memberString = sharedAccountsPreDatabaseToDoList.join("#");
+    var listId = localStorage.loggedUserName + listName;
+    db.push({type:"tdlist",name:listName,members:memberString,listId:listId});
 }

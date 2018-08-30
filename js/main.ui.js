@@ -2,6 +2,12 @@ var splashPort = document.getElementById("splashPort");
 var accountPort = document.getElementById("accountPort");
 var todoListport = document.getElementById("todoListport");
 
+var createSubmittionTDlist = document.getElementById("createSubmittionTDlist");
+
+var registSubmitBtn = document.getElementById("registSubmitBtn");
+
+var addedUsersList = document.getElementById("addedUsersList");
+
 var friendSearchAndAddModal = document.getElementById("friendSearchAndAddModal");
 
 var newListTypeSelect = document.getElementById("newListTypeSelect");
@@ -16,13 +22,18 @@ var friendsBottomMenuBtnNotSelected = document.getElementById("friendsBottomMenu
 var activityBottomMenuBtnSelected = document.getElementById("activityBottomMenuBtnSelected");
 var activityBottomMenuBtnNotSelected = document.getElementById("activityBottomMenuBtnNotSelected");
 
+var editButtonContent = '<img src="data:image/svg+xml;utf8;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iaXNvLTg4NTktMSI/Pgo8IS0tIEdlbmVyYXRvcjogQWRvYmUgSWxsdXN0cmF0b3IgMTYuMC4wLCBTVkcgRXhwb3J0IFBsdWctSW4gLiBTVkcgVmVyc2lvbjogNi4wMCBCdWlsZCAwKSAgLS0+CjwhRE9DVFlQRSBzdmcgUFVCTElDICItLy9XM0MvL0RURCBTVkcgMS4xLy9FTiIgImh0dHA6Ly93d3cudzMub3JnL0dyYXBoaWNzL1NWRy8xLjEvRFREL3N2ZzExLmR0ZCI+CjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgdmVyc2lvbj0iMS4xIiBpZD0iQ2FwYV8xIiB4PSIwcHgiIHk9IjBweCIgd2lkdGg9IjMycHgiIGhlaWdodD0iMzJweCIgdmlld0JveD0iMCAwIDUyOC44OTkgNTI4Ljg5OSIgc3R5bGU9ImVuYWJsZS1iYWNrZ3JvdW5kOm5ldyAwIDAgNTI4Ljg5OSA1MjguODk5OyIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSI+CjxnPgoJPHBhdGggZD0iTTMyOC44ODMsODkuMTI1bDEwNy41OSwxMDcuNTg5bC0yNzIuMzQsMjcyLjM0TDU2LjYwNCwzNjEuNDY1TDMyOC44ODMsODkuMTI1eiBNNTE4LjExMyw2My4xNzdsLTQ3Ljk4MS00Ny45ODEgICBjLTE4LjU0My0xOC41NDMtNDguNjUzLTE4LjU0My02Ny4yNTksMGwtNDUuOTYxLDQ1Ljk2MWwxMDcuNTksMTA3LjU5bDUzLjYxMS01My42MTEgICBDNTMyLjQ5NSwxMDAuNzUzLDUzMi40OTUsNzcuNTU5LDUxOC4xMTMsNjMuMTc3eiBNMC4zLDUxMi42OWMtMS45NTgsOC44MTIsNS45OTgsMTYuNzA4LDE0LjgxMSwxNC41NjVsMTE5Ljg5MS0yOS4wNjkgICBMMjcuNDczLDM5MC41OTdMMC4zLDUxMi42OXoiIGZpbGw9IiM5MDkwOTAiLz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8L3N2Zz4K" />';
+var viewButtonContent = '<img src="data:image/svg+xml;utf8;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iaXNvLTg4NTktMSI/Pgo8IS0tIEdlbmVyYXRvcjogQWRvYmUgSWxsdXN0cmF0b3IgMTkuMC4wLCBTVkcgRXhwb3J0IFBsdWctSW4gLiBTVkcgVmVyc2lvbjogNi4wMCBCdWlsZCAwKSAgLS0+CjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgdmVyc2lvbj0iMS4xIiBpZD0iQ2FwYV8xIiB4PSIwcHgiIHk9IjBweCIgdmlld0JveD0iMCAwIDQ4OC44NSA0ODguODUiIHN0eWxlPSJlbmFibGUtYmFja2dyb3VuZDpuZXcgMCAwIDQ4OC44NSA0ODguODU7IiB4bWw6c3BhY2U9InByZXNlcnZlIiB3aWR0aD0iMzJweCIgaGVpZ2h0PSIzMnB4Ij4KPGc+Cgk8cGF0aCBkPSJNMjQ0LjQyNSw5OC43MjVjLTkzLjQsMC0xNzguMSw1MS4xLTI0MC42LDEzNC4xYy01LjEsNi44LTUuMSwxNi4zLDAsMjMuMWM2Mi41LDgzLjEsMTQ3LjIsMTM0LjIsMjQwLjYsMTM0LjIgICBzMTc4LjEtNTEuMSwyNDAuNi0xMzQuMWM1LjEtNi44LDUuMS0xNi4zLDAtMjMuMUM0MjIuNTI1LDE0OS44MjUsMzM3LjgyNSw5OC43MjUsMjQ0LjQyNSw5OC43MjV6IE0yNTEuMTI1LDM0Ny4wMjUgICBjLTYyLDMuOS0xMTMuMi00Ny4yLTEwOS4zLTEwOS4zYzMuMi01MS4yLDQ0LjctOTIuNyw5NS45LTk1LjljNjItMy45LDExMy4yLDQ3LjIsMTA5LjMsMTA5LjMgICBDMzQzLjcyNSwzMDIuMjI1LDMwMi4yMjUsMzQzLjcyNSwyNTEuMTI1LDM0Ny4wMjV6IE0yNDguMDI1LDI5OS42MjVjLTMzLjQsMi4xLTYxLTI1LjQtNTguOC01OC44YzEuNy0yNy42LDI0LjEtNDkuOSw1MS43LTUxLjcgICBjMzMuNC0yLjEsNjEsMjUuNCw1OC44LDU4LjhDMjk3LjkyNSwyNzUuNjI1LDI3NS41MjUsMjk3LjkyNSwyNDguMDI1LDI5OS42MjV6IiBmaWxsPSIjOTA5MDkwIi8+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPC9zdmc+Cg==" />';
+
+var editStateWindow = '<div class="userAddport" id="userRestSelectPort" style="display: block;"><div class="colKing">このユーザーとの共有範囲を選択</div><button type="button" class="colBtn upper" onclick="changeRest('+"join"+')"><span class="colHeading">参加者</span><br><span class="colDescription">このユーザーはリストに参加することができます。</span></button><button type="button" class="colBtn under" onclick="changeRest('+"view"+')"><span class="colHeading">閲覧者</span><br><spam class="colDescription">このユーザーはToDoリストでのアクティビティー、進捗状況をみることができます。</spam></button></div>';
+
 var todoListCreatePort = document.getElementById("todoListCreatePort");
 
 accountPort.style.display = "none";
 todoListport.style.display = "none";
 
 var listport = document.getElementById("listport");
-var friendsport = document.getElementById("friendsport");
+var accountManagementPort = document.getElementById("accountManagementPort");
 var activityport = document.getElementById("activityport");
 
 function init() {
@@ -69,6 +80,8 @@ function shouCrtPort() {
     }, 1000)
 }
 
+
+
 function checkFormContentRegist() {
     var attMailV = document.getElementById("attMail").value;
     var attNameV = document.getElementById("attName").value;
@@ -104,7 +117,6 @@ var modal = document.getElementById('newListTypeSelect');
 // Get the <span> element that closes the modal
 var span = document.getElementsByClassName("close")[0];
 var spanTwo = document.getElementsByClassName("close")[1];
-var spanThree = document.getElementsByClassName("close")[2];
 
 // When the user clicks the button, open the modal
 function newList() {
@@ -127,7 +139,7 @@ window.onclick = function(event) {
 function selectWindow(mode) {
     if( mode == "list" ) {
         listport.style.display = "block";
-        friendsport.style.display = "none";
+        accountPort.style.display = "none";
         activityport.style.display = "none";
 
         listBottomMenuBtnSelected.style.display = "inline-block";
@@ -138,7 +150,7 @@ function selectWindow(mode) {
         activityBottomMenuBtnNotSelected.style.display = "inline-block";
     } else if ( mode == "friends" ) {
         listport.style.display = "none";
-        friendsport.style.display = "block";
+        accountManagementPort.style.display = "block";
         activityport.style.display = "none";
 
         listBottomMenuBtnSelected.style.display = "none";
@@ -149,7 +161,7 @@ function selectWindow(mode) {
         activityBottomMenuBtnNotSelected.style.display = "inline-block";
     } else if ( mode == "activity" ) {
         listport.style.display = "none";
-        friendsport.style.display = "none";
+        accountManagementPort.style.display = "none";
         activityport.style.display = "block";
 
         listBottomMenuBtnSelected.style.display = "none";
@@ -189,12 +201,46 @@ function shouFSAAM() {
     friendSearchAndAddModal.style.display = "block";
 }
 
-spanThree.onclick = function () {
-    friendSearchAndAddModal.style.display = "none";
-}
-
 window.onclick = function(event) {
     if (event.target == friendSearchAndAddModal) {
         friendSearchAndAddModal.style.display = "none";
+    }
+}
+function openRestSelect() {
+    document.getElementById("userRestSelectPort").style.display = "block";
+}
+function changeRest(mode) {
+    if( mode == "join") {
+        document.getElementById("thisUserRest").innerHTML = "参加者";
+        document.getElementById("userRestSelectPort").style.display = "none";
+    } else if( mode == "view" ) {
+        document.getElementById("thisUserRest").innerHTML = "閲覧者";
+        document.getElementById("userRestSelectPort").style.display = "none";
+    }
+}
+function updateSharedFriendsList() {
+    if( sharedAccountsPreDatabaseToDoList.length != 0 ) {
+        document.getElementById("noSharedUserElement").style.display = "none";
+        addedUsersList.style.display = "block";
+
+        addedUsersList.innerHTML = "";
+        for( i=0; i<sharedAccountsPreDatabaseToDoList.length; i++ ) {
+            if( sharedAccountsPreDatabaseToDoList[i].split("!")[1] == "参加者" ) {
+                addedUsersList.innerHTML += '<div class="userManagementWrapper"><div class="userManagementWrapperChild"><span class="sharedUserName">' + nmeCont[emaCont.indexOf(sharedAccountsPreDatabaseToDoList[i].split("!")[0])] + '</span><br><span class="sharedUserClass">'+ sharedAccountsPreDatabaseToDoList[i].split("!")[1] +'</span></div><button class="editBtn">'+editButtonContent+'</button></div>';
+            } else {
+                addedUsersList.innerHTML += '<div class="userManagementWrapper"><div class="userManagementWrapperChild"><span class="sharedUserName">' + nmeCont[emaCont.indexOf(sharedAccountsPreDatabaseToDoList[i].split("!")[0])] + '</span><br><span class="sharedUserClass">'+ sharedAccountsPreDatabaseToDoList[i].split("!")[1] +'</span></div><button class="editBtn">'+viewButtonContent+'</button></div>';
+            }
+        }
+    } else {
+        document.getElementById("noSharedUserElement").style.display = "block";
+        addedUsersList.innerHTML = "";
+        addedUsersList.style.display = "none";
+    }
+}
+function createTDlistAvialable(ele) {
+    if( ele.value.length != 0 ) {
+        createSubmittionTDlist.disabled = false;
+    } else {
+        createSubmittionTDlist.disabled = true;
     }
 }

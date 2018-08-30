@@ -3,6 +3,7 @@
 body {
     margin: none;
     font-family: 'Kosugi Maru', sans-serif;
+    text-align: center;
 }
 
 .logo {
@@ -234,6 +235,7 @@ button:disabled {
     bottom: 200px;
     right: 35px;
     outline: none;
+    padding: 0;
 }
 #noListsMadeED {
     width: 90%;
@@ -360,13 +362,14 @@ button:disabled {
     border: 1px solid #dde3ea;
     min-height: 80px;
     margin-top: 15px;
+    text-align: center;
 }
 #smallFriendWrapperForNewToDoList {
     width: 90%;
     margin-right: auto;
     margin-left: auto;
 }
-#noFriendsMadeForSmall {
+.noContentWrapper {
     width: 90%;
     margin-right: auto;
     margin-left: auto;1
@@ -381,7 +384,7 @@ button:disabled {
     margin-right: auto;
     margin-left: auto;
     left: 5%;
-    height: 70vh;
+    height: 60vh;
     border-radius: 6px;
 }
 .friendSearchAndAddModal {
@@ -400,5 +403,70 @@ button:disabled {
     margin-top: 10px;
 }
 .xWrapperwBorder {
-    text-align: right;width: 90%;margin-right: auto;margin-left: auto;margin-top: 10px;margin-bottom: 10px;padding: 0px 0px 8px 0px;border-bottom: 1px solid #dde3ea;
+    width: 90%;
+    margin-right: auto;
+    margin-left: auto;
+    text-align: right;
+    margin-bottom: 0px;
+    margin-top: 10px;
+}
+.colKing {
+    border-top-left-radius: 6px;
+    border-top-right-radius: 6px;
+    border-bottom: 1px solid #dde3ea;
+    font-size: 13px;
+    text-shadow: 0 0 black;
+    height: 19px;
+    background: #dde3ea;
+    padding: 10px 10px 5px 10px;
+}
+.colHeading {
+    font-weight: bold;
+    font-size: 17px;
+}
+.colBtn {
+    border: none;
+    border-bottom: 1px solid #dde3ea;
+    text-align: left;
+    background: #fff;
+    padding: 8px 7px 10px 10px;
+}
+.under {
+    border-bottom: none;
+    border-bottom-left-radius: 6px;
+    border-bottom-right-radius: 6px;
+}
+.colBtn:hover {
+    background: #3897f0;
+    color: #fff;
+}
+.userManagementWrapper {
+    padding: 10px 10px 10px 10px;
+    border-bottom: 1px solid #dde3ea;
+}
+.userManagementWrapperChild {
+    text-align: left;
+    display: inline-block;
+    width: 80%;
+}
+.sharedUserName {
+    font-size: 16px;
+    font-weight: bold;
+}
+.sharedUserClass {
+    font-size: 13px;
+    color: #909090;
+}
+.editBtn {
+    padding: 7px 10px 7px 10px;
+    border-radius: 6px;
+    background: #fff;
+    border: 1px solid #909090;
+    outline: none;
+}
+#addedUsersList {
+    display: block;
+    height: 225px;
+    overflow: auto;
+    border-bottom: 1px solid #909090;
 }
