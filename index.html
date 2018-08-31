@@ -63,15 +63,7 @@
                     <div id="tdListsWrapper">
 
                     </div>
-					<div id="everyDayList">
-						<div class="edTitleWrapper">
-							<span class="everyDayListTitle">日課</span>
-						</div>
-						<div id="noListsMadeED">
-							まだ日課が追加されていません。
-						</div>
-					</div>
-					<button class="addListBtn" onclick="newList()">
+					<button class="addListBtn" onclick="createToDoList()">
 					<img src="data:image/svg+xml;utf8;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iaXNvLTg4NTktMSI/Pgo8IS0tIEdlbmVyYXRvcjogQWRvYmUgSWxsdXN0cmF0b3IgMTkuMS4wLCBTVkcgRXhwb3J0IFBsdWctSW4gLiBTVkcgVmVyc2lvbjogNi4wMCBCdWlsZCAwKSAgLS0+CjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgdmVyc2lvbj0iMS4xIiBpZD0iQ2FwYV8xIiB4PSIwcHgiIHk9IjBweCIgdmlld0JveD0iMCAwIDMxLjQ0NCAzMS40NDQiIHN0eWxlPSJlbmFibGUtYmFja2dyb3VuZDpuZXcgMCAwIDMxLjQ0NCAzMS40NDQ7IiB4bWw6c3BhY2U9InByZXNlcnZlIiB3aWR0aD0iMzJweCIgaGVpZ2h0PSIzMnB4Ij4KPHBhdGggZD0iTTEuMTE5LDE2Ljg0MWMtMC42MTksMC0xLjExMS0wLjUwOC0xLjExMS0xLjEyN2MwLTAuNjE5LDAuNDkyLTEuMTExLDEuMTExLTEuMTExaDEzLjQ3NVYxLjEyNyAgQzE0LjU5NSwwLjUwOCwxNS4xMDMsMCwxNS43MjIsMGMwLjYxOSwwLDEuMTExLDAuNTA4LDEuMTExLDEuMTI3djEzLjQ3NmgxMy40NzVjMC42MTksMCwxLjEyNywwLjQ5MiwxLjEyNywxLjExMSAgYzAsMC42MTktMC41MDgsMS4xMjctMS4xMjcsMS4xMjdIMTYuODMzdjEzLjQ3NmMwLDAuNjE5LTAuNDkyLDEuMTI3LTEuMTExLDEuMTI3Yy0wLjYxOSwwLTEuMTI3LTAuNTA4LTEuMTI3LTEuMTI3VjE2Ljg0MUgxLjExOXoiIGZpbGw9IiNGRkZGRkYiLz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPC9zdmc+Cg==" />
 					</button>
 					<!-- The Modal -->
@@ -145,13 +137,37 @@
 							</div>
 						</div>
 						<button class="btn" onclick="createNewTDsubmit()" id="createSubmittionTDlist" disabled>作成する</button>
-						<button class="btnDull" onclick="cancelToDoListCreation()">キャンセル</button><br><br><br>
+						<button class="btnDelete" onclick="cancelToDoListCreation()">キャンセル</button><br><br><br>
 					</div>
 				</div>
 				<div id="edCreatePort">
 				</div>
-				<div id="listContent">
+				<div id="listContent" style="display: none;">
+                    <div class="sectorHeading" id="tdTitle"></div>
+                    <div id="listElementsTD">
+
+                    </div>
+                    <div id="tdTools">
+                        <button class="btn" style="margin-bottom: 20px" onclick="openNewTDcontent()">新規作成</button>
+                    </div>
 				</div>
+                <!-- The Modal -->
+                <div id="newTDcontentCreator" class="modal">
+                    <!-- Modal content -->
+                    <div class="modal-content" id="newTDcontentCreatorWizard">
+                        <div class="xWrapperwBorder">
+                            <span class="close">&times;</span>
+                        </div>
+                        <input class="inputText" placeholder="やることを入力"><br>
+                        <input class="inputText" placeholder="概要を入力（任意）"><br><br>
+                        <span>参加するユーザーを選択</span>
+                        <div id="userListWrapper">
+
+                        </div>
+                        <button class="btn" disabled>作成</button>
+                        <button class="btnDelete">キャンセル</button>
+                    </div>
+                </div>
 				<div id="edContent">
 				</div>
 			</div>

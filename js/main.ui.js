@@ -2,6 +2,8 @@ var splashPort = document.getElementById("splashPort");
 var accountPort = document.getElementById("accountPort");
 var todoListport = document.getElementById("todoListport");
 
+var newTDcontentCreator = document.getElementById("newTDcontentCreator");
+
 var createSubmittionTDlist = document.getElementById("createSubmittionTDlist");
 
 var registSubmitBtn = document.getElementById("registSubmitBtn");
@@ -40,8 +42,9 @@ function init() {
     document.getElementById("logoLarge").style.opacity = "1";
     document.getElementById("allListPort").style.height = (window.innerHeight - 70 - 89) + "px";
     document.getElementById("noListsMade").style.height = (window.innerHeight - 70 - 214) + "px";
-    document.getElementById("tdListsWrapper").style.height = (window.innerHeight - 70 - 214 + 15) + "px";
+    document.getElementById("tdListsWrapper").style.height = (window.innerHeight - 70 - 89) + "px";
     document.getElementById("todoListCreatePort").style.height = (window.innerHeight - 54) + "px";
+    document.getElementById("listContent").style.height = (window.innerHeight - 54) + "px";
     setTimeout( function () {
         if(localStorage.testLogStateOne) {
             if( localStorage.testLogStateOne == "loggedIn" ) {
@@ -119,6 +122,7 @@ var modal = document.getElementById('newListTypeSelect');
 // Get the <span> element that closes the modal
 var span = document.getElementsByClassName("close")[0];
 var spanTwo = document.getElementsByClassName("close")[1];
+var spanThree = document.getElementsByClassName("close")[2];
 
 // When the user clicks the button, open the modal
 function newList() {
@@ -195,6 +199,10 @@ spanTwo.onclick = function () {
     addFriendsSmallModal.style.display = "none";
 }
 
+spanThree.onclick = function () {
+    newTDcontentCreator.style.display = "none";
+}
+
 function cancelToDoListCreation() {
     todoListCreatePort.style.display = "none";
 }
@@ -208,6 +216,13 @@ window.onclick = function(event) {
         friendSearchAndAddModal.style.display = "none";
     }
 }
+
+window.onclick = function(event) {
+    if (event.target == newTDcontentCreator) {
+        newTDcontentCreator.style.display = "none";
+    }
+}
+
 function openRestSelect() {
     document.getElementById("userRestSelectPort").style.display = "block";
 }
@@ -250,4 +265,18 @@ function createTDlistAvialable(ele) {
     } else {
         createSubmittionTDlist.disabled = true;
     }
+}
+var closeBtnContent = '<img height="20px" src="data:image/svg+xml;utf8;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iaXNvLTg4NTktMSI/Pgo8IS0tIEdlbmVyYXRvcjogQWRvYmUgSWxsdXN0cmF0b3IgMTkuMC4wLCBTVkcgRXhwb3J0IFBsdWctSW4gLiBTVkcgVmVyc2lvbjogNi4wMCBCdWlsZCAwKSAgLS0+CjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgdmVyc2lvbj0iMS4xIiBpZD0iQ2FwYV8xIiB4PSIwcHgiIHk9IjBweCIgdmlld0JveD0iMCAwIDQ3Ljk3MSA0Ny45NzEiIHN0eWxlPSJlbmFibGUtYmFja2dyb3VuZDpuZXcgMCAwIDQ3Ljk3MSA0Ny45NzE7IiB4bWw6c3BhY2U9InByZXNlcnZlIiB3aWR0aD0iMzJweCIgaGVpZ2h0PSIzMnB4Ij4KPGc+Cgk8cGF0aCBkPSJNMjguMjI4LDIzLjk4Nkw0Ny4wOTIsNS4xMjJjMS4xNzItMS4xNzEsMS4xNzItMy4wNzEsMC00LjI0MmMtMS4xNzItMS4xNzItMy4wNy0xLjE3Mi00LjI0MiwwTDIzLjk4NiwxOS43NDRMNS4xMjEsMC44OCAgIGMtMS4xNzItMS4xNzItMy4wNy0xLjE3Mi00LjI0MiwwYy0xLjE3MiwxLjE3MS0xLjE3MiwzLjA3MSwwLDQuMjQybDE4Ljg2NSwxOC44NjRMMC44NzksNDIuODVjLTEuMTcyLDEuMTcxLTEuMTcyLDMuMDcxLDAsNC4yNDIgICBDMS40NjUsNDcuNjc3LDIuMjMzLDQ3Ljk3LDMsNDcuOTdzMS41MzUtMC4yOTMsMi4xMjEtMC44NzlsMTguODY1LTE4Ljg2NEw0Mi44NSw0Ny4wOTFjMC41ODYsMC41ODYsMS4zNTQsMC44NzksMi4xMjEsMC44NzkgICBzMS41MzUtMC4yOTMsMi4xMjEtMC44NzljMS4xNzItMS4xNzEsMS4xNzItMy4wNzEsMC00LjI0MkwyOC4yMjgsMjMuOTg2eiIgZmlsbD0iI0ZGRkZGRiIvPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+Cjwvc3ZnPgo=" />';
+function openToDoList(idoi) {
+    document.getElementById("listContent").style.display = "block";
+    document.getElementById("tdTitle").innerHTML = idoi + '<button class="backBtn" onclick="closeTdShouPort()">'+ closeBtnContent+'</button>';
+}
+function closeTdShouPort() {
+    document.getElementById("listContent").style.display = "none";
+}
+function openNewTDcontent() {
+    document.getElementById("newTDcontentCreator").style.display = "block";
+}
+function closeCreatorWizardTD() {
+    document.getElementById("newTDcontentCreator").style.display = "none";
 }
