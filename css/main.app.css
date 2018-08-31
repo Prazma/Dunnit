@@ -229,7 +229,6 @@ button:disabled {
     height: 70vh;
     color: #909090;
     text-align: center;
-    border-bottom: 1px solid #dde3ea;
 }
 .addListBtn {
     position: fixed;
