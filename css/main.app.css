@@ -79,7 +79,7 @@ form {
     -webkit-appearance: none;
     -moz-appearance: none;
     background: #3897f0;
-    border-color: #3897f0;
+    border: 1px solid #3897f0;
     color: #fff;
     width: 85%;
     padding: 8px;
@@ -109,7 +109,7 @@ form {
     -webkit-appearance: none;
     -moz-appearance: none;
     background: #989898;
-    border-color: #989898;
+    border: 1px solid #989898;
     color: #fff;
     width: 85%;
     padding: 8px;
@@ -529,7 +529,7 @@ button:disabled {
     -webkit-appearance: none;
     -moz-appearance: none;
     background: #3897f0;
-    border-color: #3897f0;
+    border: 1px solid #3897f0;
     color: #fff;
     width: 85%;
     padding: 8px;
@@ -647,6 +647,7 @@ button:disabled {
     width: 90%;
     margin-right: auto;
     margin-left: auto;
+    text-align: left;
 }
 .wrapKing {
     border-bottom: 1px solid #dde3ea;
@@ -698,4 +699,36 @@ button:disabled {
 .memberBtn {
     margin-top: 0px;
     margin-bottom: 15px;
+}
+.completeWrap {
+    text-align: center;
+    background: #f0af38;
+    color: #fff;
+    padding: 5px 5px 5px 5px;
+    width: 100px;
+    border-radius: 6px;
+    font-size: 12px;
+    margin-right: auto;
+    margin-left: auto;
+    -webkit-animation-name: fadeIn; /* Fade in the background */
+    -webkit-animation-duration: 0.4s;
+    animation-name: fadeIn;
+    animation-duration: 0.4s
+}
+.activityWrapper {
+    border-bottom: 1px solid #dde3ea;
+padding: 15px 0px 15px 0px;
+color: #909090;
+text-align: left;
+width: 90%;
+margin-right: auto;
+margin-left: auto;
+}
+.activityHeader {
+    color: #000;
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+people {
+    color: #3897f0;
 }

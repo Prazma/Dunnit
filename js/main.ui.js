@@ -332,10 +332,18 @@ function updateTDlistElements() {
             if( tdListElementRealTitle[i] == selectedThingTitle ) {
                 document.getElementById("tdContentWrap").style.display = "block";
                 document.getElementById("noTDlistContent").style.display = "none";
-                document.getElementById("tdContentWrap").innerHTML += '<div class="taskColDiv"><button class="checkBtn specialII"></button><div class="taskColTopHeading"><span>'+tdListElementTitle[i]+'</span></div><div class="completeBoard"><span>達成度（％）</span><div class="progressWrapper"><div class="progressContent"></div></div></div><button class="btn memberBtn">メンバー</button></div>';
+                document.getElementById("tdContentWrap").innerHTML += '<div class="taskColDiv"><button class="checkBtn specialII" onclick="checkThisForShou(this)"></button><div class="taskColTopHeading"><span>'+tdListElementTitle[i]+'</span></div><div class="completeBoard"><span>達成度（<span id="forShouPerc">0</span>％）</span><div class="progressWrapper"><div class="progressContent" id="shouPC"></div></div><div style="display: none;" id="successSpan" class="completeWrap"><span>達成しました</span></div></div><button class="btn memberBtn">メンバー</button></div>';
             }
         }
     } else {
         document.getElementById("noTDlistContent").style.display = "block";
     }
+}
+function checkThisForShou(ele) {
+    ele.style.background = "#dde3ea";
+    document.getElementById("forShouPerc").innerHTML = "50";
+    document.getElementById("shouPC").style.width = "50%";
+    document.getElementById("noActivityWrapper").style.display = "none";
+    document.getElementById("activityList").style.display = "block";
+    document.getElementById("successSpan").style.display = "block";
 }
