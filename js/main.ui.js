@@ -45,8 +45,10 @@ function init() {
     document.getElementById("allListPort").style.height = (window.innerHeight - 70 - 89) + "px";
     document.getElementById("noListsMade").style.height = (window.innerHeight - 70 - 214) + "px";
     document.getElementById("tdListsWrapper").style.height = (window.innerHeight - 70 - 89) + "px";
+    document.getElementById("tdContentWrap").style.height = (window.innerHeight - 70 - 89 - 85 - 26) + "px";
     document.getElementById("todoListCreatePort").style.height = (window.innerHeight - 54) + "px";
     document.getElementById("listContent").style.height = (window.innerHeight - 54) + "px";
+    document.getElementById("createProgressWrapper").style.height = (window.innerHeight - 61 - 54 -30) + "px";
     setTimeout( function () {
         if(localStorage.testLogStateOne) {
             if( localStorage.testLogStateOne == "loggedIn" ) {
@@ -272,6 +274,7 @@ var closeBtnContent = '<img height="20px" src="data:image/svg+xml;utf8;base64,PD
 function openToDoList(idoi) {
     document.getElementById("listContent").style.display = "block";
     document.getElementById("tdTitle").innerHTML = idoi + '<button class="backBtn" onclick="closeTdShouPort()">'+ closeBtnContent+'</button>';
+    updateTDlistElements();
 }
 function closeTdShouPort() {
     document.getElementById("listContent").style.display = "none";
@@ -318,5 +321,21 @@ function checkUsr(ema,ele) {
     } else {
         ele.style.background = "#fff";
         checkData[checkDataSub.indexOf(ema)] = "false";
+    }
+}
+function updateTDlistElements() {
+    if( tdListElementTitle.length != 0 ) {
+        document.getElementById("noTDlistContent").style.display = "block";
+        document.getElementById("tdContentWrap").innerHTML = "";
+        var selectedThingTitle = document.getElementById("tdTitle").innerHTML.split("<")[0];
+        for( i=0;i<tdListElementTitle.length;i++) {
+            if( tdListElementRealTitle[i] == selectedThingTitle ) {
+                document.getElementById("tdContentWrap").style.display = "block";
+                document.getElementById("noTDlistContent").style.display = "none";
+                document.getElementById("tdContentWrap").innerHTML += '<div class="taskColDiv"><button class="checkBtn specialII"></button><div class="taskColTopHeading"><span>'+tdListElementTitle[i]+'</span></div><div class="completeBoard"><span>達成度（％）</span><div class="progressWrapper"><div class="progressContent"></div></div></div><button class="btn memberBtn">メンバー</button></div>';
+            }
+        }
+    } else {
+        document.getElementById("noTDlistContent").style.display = "block";
     }
 }

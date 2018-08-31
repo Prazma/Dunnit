@@ -10,6 +10,12 @@ var attPass = document.getElementById("attPass");
 
 var allTDlistArray = [];
 
+//TDlist data arrays below
+var tdListElementTitle = [];
+var tdListElementMembers = [];
+var tdListElementDesc = [];
+var tdListElementRealTitle = [];
+
 var addUserTip = document.getElementById("addUserTip");
 
 var friendAddEmail = document.getElementById("friendAddEmail");
@@ -95,6 +101,14 @@ var startListening = function() {
                 todoListPeopleDatasets.push(vax.name+"%"+vax.members);
                 allTDlistArray.push();
             }
+        } else if (vax.type == "tdContentData") {
+            if ( vax.accountTarget == localStorage.loggedUserName ) {
+                tdListElementTitle.push(vax.taskTitle);
+                tdListElementMembers.push(vax.members);
+                tdListElementDesc.push(vax.taskDescription);
+                tdListElementRealTitle.push(vax.listID);
+                updateTDlistElements();
+            }
         }
 	});
 }
@@ -138,16 +152,19 @@ function createNewTDsubmit() {
     var listId = localStorage.loggedUserName + "$" + listName;
     var listDescription = document.getElementById("TDlistDescription").value;
     db.push({type:"tdlist",name:listName,members:memberString,listId:listId,listDescription:listDescription,owner:listOwner});
+    var nCont = listOwner + "がリスト「"+listName+"」を"+sharedAccountsEmailOnly.join("、")+"に共有しました。";
+    db.push({type:"notification",content:nCont})
     todoListCreatePort.style.display = "none";
     resetTDcreateport();
 }
 function createNewElementToTD() {
-    var listID = localStorage.loggedUserName+document.getElementById("tdList").value;
+    var listID = document.getElementById("tdTitle").innerHTML.split("<")[0];
     var title = document.getElementById("whatToDo").value;
     var description = document.getElementById("newTDdesc").value;
     var members = "";
     for(i=0;i<checkDataSub.length;i++) {
-        var members = members+checkDataSub+"*"+checkData;
+        var members = members+checkDataSub[i]+"*"+checkData[i];
     }
-    db.push({type:"tdContentData",title:title,description:newTDdesc,members:members});
+    closeCreatorWizardTD();
+    db.push({type:"tdContentData",taskTitle:title,taskDescription:newTDdesc,members:members,accountTarget:localStorage.loggedUserName,listID:listID});
 }
