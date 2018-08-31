@@ -351,6 +351,7 @@ button:disabled {
     width: 100%;
     height: 100vh;
     background: #fff;
+    overflow: auto;
 
 }
 .userAddport {
@@ -504,4 +505,20 @@ button:disabled {
     float: right;
     margin-top: 9px;
     margin-right: 25px;
+}
+.btnDelete {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background: #3897f0;
+    border-color: #3897f0;
+    color: #fff;
+    width: 85%;
+    padding: 8px;
+    font-size: 15px;
+    border-radius: 8px;
+    margin-top: 20px;
+    outline: none;
+    max-width: 300px;
+    background: #fe5b5b;
+    border-color: #fe5b5b;
 }

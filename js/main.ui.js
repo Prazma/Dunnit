@@ -41,6 +41,7 @@ function init() {
     document.getElementById("allListPort").style.height = (window.innerHeight - 70 - 89) + "px";
     document.getElementById("noListsMade").style.height = (window.innerHeight - 70 - 214) + "px";
     document.getElementById("tdListsWrapper").style.height = (window.innerHeight - 70 - 214 + 15) + "px";
+    document.getElementById("todoListCreatePort").style.height = (window.innerHeight - 54) + "px";
     setTimeout( function () {
         if(localStorage.testLogStateOne) {
             if( localStorage.testLogStateOne == "loggedIn" ) {
@@ -227,9 +228,9 @@ function updateSharedFriendsList() {
         addedUsersList.innerHTML = "";
         for( i=0; i<sharedAccountsPreDatabaseToDoList.length; i++ ) {
             if( sharedAccountsPreDatabaseToDoList[i].split("!")[1] == "参加者" ) {
-                addedUsersList.innerHTML += '<div class="userManagementWrapper"><div class="userManagementWrapperChild"><span class="sharedUserName">' + nmeCont[emaCont.indexOf(sharedAccountsPreDatabaseToDoList[i].split("!")[0])] + '</span><br><span class="sharedUserClass">'+ sharedAccountsPreDatabaseToDoList[i].split("!")[1] +'</span></div><button class="editBtn">'+editButtonContent+'</button></div>';
+                addedUsersList.innerHTML += '<div class="userManagementWrapper"><div class="userManagementWrapperChild"><span class="sharedUserName">' + nmeCont[emaCont.indexOf(sharedAccountsPreDatabaseToDoList[i].split("!")[0])] + '</span><br><span class="sharedUserClass">'+ sharedAccountsPreDatabaseToDoList[i].split("!")[1] +'</span></div><button class="editBtn">'+editButtonContent+'</button><br><button class="btnDelete" onclick="removeUserForShareList('+i+')">削除</button></div>';
             } else {
-                addedUsersList.innerHTML += '<div class="userManagementWrapper"><div class="userManagementWrapperChild"><span class="sharedUserName">' + nmeCont[emaCont.indexOf(sharedAccountsPreDatabaseToDoList[i].split("!")[0])] + '</span><br><span class="sharedUserClass">'+ sharedAccountsPreDatabaseToDoList[i].split("!")[1] +'</span></div><button class="editBtn">'+viewButtonContent+'</button></div>';
+                addedUsersList.innerHTML += '<div class="userManagementWrapper"><div class="userManagementWrapperChild"><span class="sharedUserName">' + nmeCont[emaCont.indexOf(sharedAccountsPreDatabaseToDoList[i].split("!")[0])] + '</span><br><span class="sharedUserClass">'+ sharedAccountsPreDatabaseToDoList[i].split("!")[1] +'</span></div><button class="editBtn">'+viewButtonContent+'</button><br><button class="btnDelete" onclick="removeUserForShareList('+i+')">削除</button></div>';
             }
         }
     } else {
@@ -237,6 +238,11 @@ function updateSharedFriendsList() {
         addedUsersList.innerHTML = "";
         addedUsersList.style.display = "none";
     }
+}
+function removeUserForShareList(number) {
+    sharedAccountsEmailOnly.splice(number,1);
+    sharedAccountsPreDatabaseToDoList.splice(number,1);
+    updateSharedFriendsList()
 }
 function createTDlistAvialable(ele) {
     if( ele.value.length != 0 ) {
