@@ -276,6 +276,8 @@ function openToDoList(idoi) {
 function closeTdShouPort() {
     document.getElementById("listContent").style.display = "none";
 }
+var checkDataSub = [];
+var checkData = [];
 function openNewTDcontent() {
     document.getElementById("userListWrapper").innerHTML = "";
     document.getElementById("newTDcontentCreator").style.display = "block";
@@ -283,7 +285,9 @@ function openNewTDcontent() {
         if( todoListPeopleDatasets[i].split("%")[0] == document.getElementById("tdTitle").innerHTML.split("<")[0] ){
             for(o=0;o<todoListPeopleDatasets[i].split("%")[1].split("#").length;o++){
                 if(todoListPeopleDatasets[i].split("%")[1].split("#")[o].split("!")[1]=="参加者"){
-                    document.getElementById("userListWrapper").innerHTML += "<div class='takepee'><button class='checkBtn' onclick='checkUsr('"+todoListPeopleDatasets[i].split("%")[1].split("#")[o].split("!")[0]+"')'></button><div class='userLabel'>" + nmeCont[emaCont.indexOf(todoListPeopleDatasets[i].split("%")[1].split("#")[o].split("!")[0])] + "</div></div>";
+                    document.getElementById("userListWrapper").innerHTML += "<div class='takepee'><button class='checkBtn' onclick='checkUsr("+'"'+todoListPeopleDatasets[i].split("%")[1].split("#")[o].split("!")[0]+'"'+",this)'></button><div class='userLabel'>" + nmeCont[emaCont.indexOf(todoListPeopleDatasets[i].split("%")[1].split("#")[o].split("!")[0])] + "</div></div>";
+                    checkDataSub.push(todoListPeopleDatasets[i].split("%")[1].split("#")[o].split("!")[0]);
+                    checkData.push("false");
                 }
             }
         }
@@ -305,5 +309,14 @@ function checkIfThisFilled(ele) {
         document.getElementById("createToDoElementSubmitter").disabled = false;
     } else {
         document.getElementById("createToDoElementSubmitter").disabled = true;
+    }
+}
+function checkUsr(ema,ele) {
+    if( checkData[checkDataSub.indexOf(ema)] == "false" ) {
+        ele.style.background = "#9cc9ff";
+        checkData[checkDataSub.indexOf(ema)] = "true";
+    } else {
+        ele.style.background = "#fff";
+        checkData[checkDataSub.indexOf(ema)] = "false";
     }
 }

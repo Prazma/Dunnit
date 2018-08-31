@@ -496,11 +496,13 @@ button:disabled {
 }
 .listColBtn {
     width: 100%;
-    background: #fff;
+    background: #dde3ea;
     border: none;
     border-bottom: 1px solid #dde3ea;
     text-align: left;
     outline: none;
+    border-top-left-radius: 6px;
+    border-top-right-radius: 6px;
 }
 .listButtonContentWrapperOne {
     width: 50%;
@@ -622,4 +624,38 @@ button:disabled {
 .userLabel {
     margin-top: 10px;
     margin-bottom: 10px;
+}
+.progressWrapper {
+    height: 15px;
+    border: 1px solid #dde3ea;
+    width: 90%;
+    margin-right: auto;
+    margin-left: auto;
+    border-radius: 6px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+.progressContent {
+    background: #5ba5fe;
+    height: 15px;
+    border-radius: 5px;
+    width: 0%;
+    transition: 0.7s;
+    -webkit-transition: 0.7s;
+}
+.ew {
+    width: 90%;
+    margin-right: auto;
+    margin-left: auto;
+}
+.wrapKing {
+    border-bottom: 1px solid #dde3ea;
+    padding: 0px 0px 15px 0px;
+    margin-bottom: 15px;
+    width: 90%;
+    border: 1px solid #dde3ea;
+    border-radius: 7px;
+    margin-right: auto;
+    margin-left: auto;
+    margin-top: 15px;
 }

@@ -91,7 +91,7 @@ var startListening = function() {
         } else if (vax.type == "tdlist") {
             if( vax.owner == localStorage.loggedUserName ) {
                 document.getElementById("noListsMade").style.display = "none";
-                document.getElementById("tdListsWrapper").innerHTML += "<div class='listColBtn'><div class='listButtonContentWrapperOne'>"+vax.name+"</div><button class='openBtn' onclick='openToDoList("+'"'+vax.name+'"'+")'>開く</button><button class='settingsBtn' onclick='openSettings("+'"'+vax.name+'"'+")'>"+settingsImgContent+"</button></div>";
+                document.getElementById("tdListsWrapper").innerHTML += "<div class='wrapKing'><div class='listColBtn'><div class='listButtonContentWrapperOne'>"+vax.name+"</div><button class='openBtn' onclick='openToDoList("+'"'+vax.name+'"'+")'>開く</button><button class='settingsBtn' onclick='openSettings("+'"'+vax.name+'"'+")'>"+settingsImgContent+"</button></div><br><div class='ew'>あなたの達成度（％）</span><br><div class='progressWrapper'><div class='progressContent'></div></div><span class='ew'>全員の達成度（％）</span><br><div class='progressWrapper'><div class='progressContent'></div></div></div>";
                 todoListPeopleDatasets.push(vax.name+"%"+vax.members);
                 allTDlistArray.push();
             }
@@ -145,5 +145,9 @@ function createNewElementToTD() {
     var listID = localStorage.loggedUserName+document.getElementById("tdList").value;
     var title = document.getElementById("whatToDo").value;
     var description = document.getElementById("newTDdesc").value;
-    db.push({type:"tdContentData",title:title,description:newTDdesc});
+    var members = "";
+    for(i=0;i<checkDataSub.length;i++) {
+        var members = members+checkDataSub+"*"+checkData;
+    }
+    db.push({type:"tdContentData",title:title,description:newTDdesc,members:members});
 }
