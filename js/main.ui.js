@@ -2,6 +2,8 @@ var splashPort = document.getElementById("splashPort");
 var accountPort = document.getElementById("accountPort");
 var todoListport = document.getElementById("todoListport");
 
+var assignDesArray = [];
+
 var newTDcontentCreator = document.getElementById("newTDcontentCreator");
 
 var createSubmittionTDlist = document.getElementById("createSubmittionTDlist");
@@ -275,8 +277,33 @@ function closeTdShouPort() {
     document.getElementById("listContent").style.display = "none";
 }
 function openNewTDcontent() {
+    document.getElementById("userListWrapper").innerHTML = "";
     document.getElementById("newTDcontentCreator").style.display = "block";
+    for(i=0;i<todoListPeopleDatasets.length;i++){
+        if( todoListPeopleDatasets[i].split("%")[0] == document.getElementById("tdTitle").innerHTML.split("<")[0] ){
+            for(o=0;o<todoListPeopleDatasets[i].split("%")[1].split("#").length;o++){
+                if(todoListPeopleDatasets[i].split("%")[1].split("#")[o].split("!")[1]=="参加者"){
+                    document.getElementById("userListWrapper").innerHTML += "<div class='takepee'><button class='checkBtn' onclick='checkUsr('"+todoListPeopleDatasets[i].split("%")[1].split("#")[o].split("!")[0]+"')'></button><div class='userLabel'>" + nmeCont[emaCont.indexOf(todoListPeopleDatasets[i].split("%")[1].split("#")[o].split("!")[0])] + "</div></div>";
+                }
+            }
+        }
+    }
 }
 function closeCreatorWizardTD() {
     document.getElementById("newTDcontentCreator").style.display = "none";
+}
+function resetTDcreateport() {
+    document.getElementById("listNameInputElement").value = "";
+    document.getElementById("TDlistDescription").value = "";
+    document.getElementById("createSubmittionTDlist").disabled = true;
+    sharedAccountsPreDatabaseToDoList = [];
+    sharedAccountsEmailOnly = [];
+    updateSharedFriendsList();
+}
+function checkIfThisFilled(ele) {
+    if( ele.value.length != 0 ) {
+        document.getElementById("createToDoElementSubmitter").disabled = false;
+    } else {
+        document.getElementById("createToDoElementSubmitter").disabled = true;
+    }
 }

@@ -340,6 +340,7 @@ button:disabled {
     margin-top: 0px;
     margin-bottom: 20px;
     text-align: center;
+    outline: none;
 }
 .xWrapper {
     width: 100%;
@@ -350,6 +351,7 @@ button:disabled {
 }
 .bannerBtnChildSpanSelected {
     color: #5ba5fe;
+    outline: none;
 }
 #todoListCreatePort {
     display: none;
@@ -444,6 +446,7 @@ button:disabled {
     text-align: left;
     background: #fff;
     padding: 8px 7px 10px 10px;
+    outline: none;
 }
 .under {
     border-bottom: none;
@@ -453,6 +456,7 @@ button:disabled {
 .colBtn:hover {
     background: #3897f0;
     color: #fff;
+    outline: none;
 }
 .userManagementWrapper {
     padding: 10px 10px 10px 10px;
@@ -496,6 +500,7 @@ button:disabled {
     border: none;
     border-bottom: 1px solid #dde3ea;
     text-align: left;
+    outline: none;
 }
 .listButtonContentWrapperOne {
     width: 50%;
@@ -516,6 +521,7 @@ button:disabled {
     float: right;
     margin-top: 9px;
     margin-right: 25px;
+    outline: none;
 }
 .btnDelete {
     -webkit-appearance: none;
@@ -592,4 +598,28 @@ button:disabled {
     margin-left: auto;
     height: 160px;
     margin-top: 15px;
+}
+.takepee {
+    border: none;
+    background: #fff;
+    border-bottom: 1px solid #dde3ea;
+    width: 100%;
+}
+.checkBtn {
+    border-radius: 50%;
+    padding: 0px 0px 0px 0px;
+    height: 16px;
+    width: 16px;
+    border: 2px solid #3897f0;
+    float: left;
+    margin-left: 20px;
+    margin-bottom: 10px;
+    outline: none;
+    /*
+    background: #9cc9ff;
+    */
+}
+.userLabel {
+    margin-top: 10px;
+    margin-bottom: 10px;
 }

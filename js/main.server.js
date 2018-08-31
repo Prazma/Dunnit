@@ -1,5 +1,7 @@
 var mifriends = [];
 
+var todoListPeopleDatasets = [];
+
 var addShareUserBtn = document.getElementById("addShareUserBtn");
 
 var attMail = document.getElementById("attMail");
@@ -89,7 +91,8 @@ var startListening = function() {
         } else if (vax.type == "tdlist") {
             if( vax.owner == localStorage.loggedUserName ) {
                 document.getElementById("noListsMade").style.display = "none";
-                document.getElementById("tdListsWrapper").innerHTML += "<div class='listColBtn'><div class='listButtonContentWrapperOne'>"+vax.name+"</div><button class='openBtn' onclick='openToDoList("+'"'+vax.name+'"'+")'>開く</button><button class='settingsBtn'>"+settingsImgContent+"</button></div>";
+                document.getElementById("tdListsWrapper").innerHTML += "<div class='listColBtn'><div class='listButtonContentWrapperOne'>"+vax.name+"</div><button class='openBtn' onclick='openToDoList("+'"'+vax.name+'"'+")'>開く</button><button class='settingsBtn' onclick='openSettings("+'"'+vax.name+'"'+")'>"+settingsImgContent+"</button></div>";
+                todoListPeopleDatasets.push(vax.name+"%"+vax.members);
                 allTDlistArray.push();
             }
         }
@@ -136,4 +139,11 @@ function createNewTDsubmit() {
     var listDescription = document.getElementById("TDlistDescription").value;
     db.push({type:"tdlist",name:listName,members:memberString,listId:listId,listDescription:listDescription,owner:listOwner});
     todoListCreatePort.style.display = "none";
+    resetTDcreateport();
+}
+function createNewElementToTD() {
+    var listID = localStorage.loggedUserName+document.getElementById("tdList").value;
+    var title = document.getElementById("whatToDo").value;
+    var description = document.getElementById("newTDdesc").value;
+    db.push({type:"tdContentData",title:title,description:newTDdesc});
 }
